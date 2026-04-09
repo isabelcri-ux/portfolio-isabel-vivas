@@ -1,0 +1,393 @@
+import { useState } from "react";
+
+const P = {
+  bg: "#060609", bgAlt: "#0B0B12", card: "#10101A", surface: "#161622",
+  accent: "#7C6AF3", accentLight: "#9B8DF7", accentSoft: "rgba(124,106,243,0.10)",
+  mint: "#34D9A8", rose: "#F06878", roseSoft: "rgba(240,104,120,0.08)", gold: "#E8A838",
+  text: "#EDECF8", textSec: "#9594AE", textMut: "#5C5B72",
+  border: "rgba(255,255,255,0.07)",
+};
+const F = { display: "'Sora', sans-serif", body: "'Plus Jakarta Sans', sans-serif", mono: "'JetBrains Mono', monospace" };
+
+const COLORS = ["#7C6AF3", "#34D9A8", "#E8A838", "#F06878", "#60A5FA", "#A78BFA", "#34D399", "#FB923C"];
+const CATEGORIES = [
+  { value: "ux", label: "UX Design" },
+  { value: "fintech", label: "Fintech" },
+  { value: "web", label: "Web" },
+  { value: "research", label: "Research" },
+  { value: "branding", label: "Branding" },
+];
+
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+
+function Field({ label, value, onChange, multiline, type = "text", placeholder = "" }) {
+  const [focused, setFocused] = useState(false);
+  const base = {
+    width: "100%", padding: "9px 12px", background: P.bgAlt,
+    border: `1px solid ${focused ? P.accent : P.border}`, borderRadius: 7,
+    color: P.text, fontFamily: F.body, fontSize: 13, outline: "none",
+    transition: "border-color 0.2s", boxSizing: "border-box",
+  };
+  return (
+    <div style={{ marginBottom: 12 }}>
+      <label style={{ display: "block", fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>
+        {label}
+      </label>
+      {multiline
+        ? <textarea value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} style={{ ...base, minHeight: 72, resize: "vertical" }} />
+        : <input type={type} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} style={base} />
+      }
+    </div>
+  );
+}
+
+function TagInput({ label, tags, onChange, placeholder = "Escribe y presiona Enter" }) {
+  const [input, setInput] = useState("");
+  const [focused, setFocused] = useState(false);
+
+  const add = () => {
+    const val = input.trim();
+    if (val && !tags.includes(val)) onChange([...tags, val]);
+    setInput("");
+  };
+
+  const remove = (tag) => onChange(tags.filter(t => t !== tag));
+
+  return (
+    <div style={{ marginBottom: 12 }}>
+      <label style={{ display: "block", fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>
+        {label}
+      </label>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, padding: "8px 10px", background: P.bgAlt, border: `1px solid ${focused ? P.accent : P.border}`, borderRadius: 7, minHeight: 40 }}>
+        {tags.map(t => (
+          <span key={t} style={{ display: "inline-flex", alignItems: "center", gap: 4, padding: "3px 8px", background: P.accentSoft, color: P.accentLight, borderRadius: 5, fontSize: 12, fontFamily: F.mono }}>
+            {t}
+            <button onClick={() => remove(t)} style={{ background: "none", border: "none", color: P.textMut, cursor: "pointer", padding: 0, fontSize: 13, lineHeight: 1 }}>×</button>
+          </span>
+        ))}
+        <input
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); add(); } }}
+          onFocus={() => setFocused(true)}
+          onBlur={() => { setFocused(false); if (input.trim()) add(); }}
+          placeholder={tags.length === 0 ? placeholder : ""}
+          style={{ flex: 1, minWidth: 120, background: "none", border: "none", outline: "none", color: P.text, fontFamily: F.body, fontSize: 13 }}
+        />
+      </div>
+    </div>
+  );
+}
+
+async function uploadFile(file) {
+  const token = localStorage.getItem("admin_token");
+  const form = new FormData();
+  form.append("image", file);
+  const res = await fetch("/api/upload", { method: "POST", headers: { Authorization: `Bearer ${token}` }, body: form });
+  if (!res.ok) throw new Error("Error al subir imagen");
+  const data = await res.json();
+  return data.url;
+}
+
+function ImageGallery({ label, images, onChange }) {
+  const [newUrl, setNewUrl] = useState("");
+  const [focused, setFocused] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const fileRef = useState(null);
+
+  const addUrl = () => {
+    const url = newUrl.trim();
+    if (url) { onChange([...(images || []), url]); setNewUrl(""); }
+  };
+
+  const handleFiles = async (files) => {
+    if (!files || !files.length) return;
+    setUploading(true);
+    try {
+      const urls = await Promise.all(Array.from(files).map(uploadFile));
+      onChange([...(images || []), ...urls]);
+    } catch { alert("Error subiendo imagen. Intenta de nuevo."); }
+    finally { setUploading(false); }
+  };
+
+  const remove = (idx) => onChange(images.filter((_, i) => i !== idx));
+
+  return (
+    <div style={{ marginBottom: 12 }}>
+      <label style={{ display: "block", fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>{label}</label>
+
+      {/* Existing images */}
+      {(images || []).length > 0 && (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: 8, marginBottom: 10 }}>
+          {images.map((url, i) => (
+            <div key={i} style={{ position: "relative", borderRadius: 8, overflow: "hidden", border: `1px solid ${P.border}`, aspectRatio: "16/9", background: P.bgAlt }}>
+              <img src={url} alt={`img-${i}`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} loading="lazy" />
+              <button onClick={() => remove(i)} style={{ position: "absolute", top: 4, right: 4, width: 22, height: 22, borderRadius: "50%", background: "rgba(0,0,0,0.7)", border: "none", color: "#fff", cursor: "pointer", fontSize: 13, lineHeight: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>×</button>
+            </div>
+          ))}
+          {uploading && (
+            <div style={{ borderRadius: 8, border: `1px dashed ${P.accent}40`, aspectRatio: "16/9", background: P.bgAlt, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ fontSize: 11, color: P.accentLight, fontFamily: F.mono }}>Subiendo...</span>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Drop zone */}
+      <div
+        onDragOver={e => e.preventDefault()}
+        onDrop={e => { e.preventDefault(); handleFiles(e.dataTransfer.files); }}
+        style={{ border: `2px dashed ${P.border}`, borderRadius: 10, padding: "20px 16px", textAlign: "center", marginBottom: 8, background: P.bgAlt, transition: "border-color 0.2s", cursor: "pointer" }}
+        onMouseEnter={e => e.currentTarget.style.borderColor = P.accent + "50"}
+        onMouseLeave={e => e.currentTarget.style.borderColor = P.border}
+        onClick={() => document.getElementById("gallery-file-input")?.click()}
+      >
+        <input
+          id="gallery-file-input"
+          type="file"
+          accept="image/*"
+          multiple
+          style={{ display: "none" }}
+          onChange={e => handleFiles(e.target.files)}
+        />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={P.textMut} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: "0 auto 8px", display: "block" }}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <p style={{ fontSize: 12, color: P.textMut, margin: 0, fontFamily: F.body }}>
+          {uploading ? "Subiendo imágenes..." : "Arrastra imágenes aquí o haz clic para seleccionar"}
+        </p>
+        <p style={{ fontSize: 11, color: `${P.textMut}70`, margin: "4px 0 0", fontFamily: F.body }}>JPG, PNG, WebP, GIF · Máx 10 MB por imagen</p>
+      </div>
+
+      {/* URL input */}
+      <div style={{ display: "flex", gap: 6 }}>
+        <input
+          value={newUrl}
+          onChange={e => setNewUrl(e.target.value)}
+          onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); addUrl(); } }}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          placeholder="O pega una URL de imagen..."
+          style={{ flex: 1, padding: "8px 12px", background: P.bgAlt, border: `1px solid ${focused ? P.accent : P.border}`, borderRadius: 7, color: P.text, fontFamily: F.body, fontSize: 12, outline: "none" }}
+        />
+        <button onClick={addUrl} disabled={!newUrl.trim()} style={{ padding: "8px 14px", background: newUrl.trim() ? P.accentSoft : "transparent", color: newUrl.trim() ? P.accentLight : P.textMut, border: `1px solid ${P.accent}30`, borderRadius: 7, cursor: newUrl.trim() ? "pointer" : "default", fontFamily: F.body, fontSize: 12, fontWeight: 600, whiteSpace: "nowrap" }}>
+          + URL
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function StepImageField({ stepId, value, onChange }) {
+  const [uploading, setUploading] = useState(false);
+  const inputId = `step-img-${stepId}`;
+
+  const handleFile = async (file) => {
+    if (!file) return;
+    setUploading(true);
+    try { onChange(await uploadFile(file)); }
+    catch { alert("Error al subir la imagen."); }
+    finally { setUploading(false); }
+  };
+
+  return (
+    <div style={{ marginTop: 6 }}>
+      <label style={{ display: "block", fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>
+        Imagen del paso (opcional)
+      </label>
+      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+        <input
+          value={value}
+          onChange={e => onChange(e.target.value)}
+          placeholder="URL o sube un archivo →"
+          style={{ flex: 1, padding: "7px 10px", background: P.card, border: `1px solid ${P.border}`, borderRadius: 6, color: P.text, fontFamily: F.body, fontSize: 12, outline: "none" }}
+        />
+        <input id={inputId} type="file" accept="image/*" style={{ display: "none" }} onChange={e => handleFile(e.target.files?.[0])} />
+        <label
+          htmlFor={inputId}
+          style={{ padding: "7px 12px", background: P.accentSoft, color: uploading ? P.textMut : P.accentLight, border: `1px solid ${P.accent}30`, borderRadius: 6, cursor: uploading ? "wait" : "pointer", fontFamily: F.body, fontSize: 11, fontWeight: 600, whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 5 }}
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          {uploading ? "Subiendo..." : "Subir"}
+        </label>
+        {value && (
+          <div style={{ width: 52, height: 36, borderRadius: 6, overflow: "hidden", border: `1px solid ${P.border}`, flexShrink: 0 }}>
+            <img src={value} alt="preview" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
+          </div>
+        )}
+        {value && (
+          <button onClick={() => onChange("")} style={{ padding: "6px 8px", background: "transparent", border: "none", color: P.textMut, cursor: "pointer", fontSize: 16, lineHeight: 1 }}>×</button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function ProcessSteps({ steps, onChange }) {
+  const addStep = () => onChange([...steps, { id: uid(), step: `0${steps.length + 1}`, title: "", desc: "", image: "" }]);
+  const removeStep = (id) => onChange(steps.filter(s => s.id !== id));
+  const updateStep = (id, field, val) => onChange(steps.map(s => s.id === id ? { ...s, [field]: val } : s));
+
+  return (
+    <div style={{ marginBottom: 12 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+        <label style={{ fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1 }}>Proceso (pasos)</label>
+        <button onClick={addStep} style={{ padding: "5px 12px", background: P.accentSoft, color: P.accentLight, border: `1px solid ${P.accent}30`, borderRadius: 6, fontSize: 11, cursor: "pointer", fontFamily: F.body, fontWeight: 600 }}>+ Paso</button>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {steps.map((s, i) => (
+          <div key={s.id} style={{ background: P.bgAlt, borderRadius: 8, padding: "12px 14px", border: `1px solid ${P.border}` }}>
+            <div style={{ display: "grid", gridTemplateColumns: "70px 1fr auto", gap: 8, alignItems: "flex-end", marginBottom: 6 }}>
+              <Field label="Nº" value={s.step} onChange={v => updateStep(s.id, "step", v)} placeholder="01" />
+              <Field label="Título" value={s.title} onChange={v => updateStep(s.id, "title", v)} placeholder="Descubrimiento" />
+              <button onClick={() => removeStep(s.id)} style={{ marginBottom: 12, padding: "9px 10px", background: "rgba(240,104,120,0.1)", color: P.rose, border: "none", borderRadius: 7, cursor: "pointer", fontSize: 14 }}>✕</button>
+            </div>
+            <Field label="Descripción" value={s.desc} onChange={v => updateStep(s.id, "desc", v)} multiline placeholder="Descripción del paso..." />
+            {/* Image for this step */}
+            <StepImageField stepId={s.id} value={s.image || ""} onChange={v => updateStep(s.id, "image", v)} />
+          </div>
+        ))}
+        {steps.length === 0 && (
+          <p style={{ fontSize: 12, color: P.textMut, fontFamily: F.body, padding: "10px 0" }}>Sin pasos aún. Haz clic en "+ Paso" para agregar.</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default function ProjectModal({ project, onSave, onClose, saving }) {
+  const [data, setData] = useState({ ...project });
+  const set = (field) => (val) => setData(d => ({ ...d, [field]: val }));
+
+  const isNew = !project.title;
+
+  const handleSave = () => onSave(data);
+
+  const handleBackdrop = (e) => { if (e.target === e.currentTarget) onClose(); };
+
+  return (
+    <div
+      onClick={handleBackdrop}
+      style={{ position: "fixed", inset: 0, zIndex: 10001, background: "rgba(0,0,0,0.75)", display: "flex", alignItems: "center", justifyContent: "center", padding: "20px 16px" }}
+    >
+      <div style={{ background: P.card, borderRadius: 16, width: "100%", maxWidth: 680, maxHeight: "90vh", display: "flex", flexDirection: "column", border: `1px solid ${P.border}`, boxShadow: "0 24px 80px rgba(0,0,0,0.6)" }}>
+
+        {/* Header */}
+        <div style={{ padding: "22px 28px 18px", borderBottom: `1px solid ${P.border}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
+          <div>
+            <h3 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: P.text, fontFamily: F.display }}>{isNew ? "Nuevo proyecto" : "Editar proyecto"}</h3>
+            {!isNew && <p style={{ margin: "3px 0 0", fontSize: 12, color: P.textMut, fontFamily: F.mono }}>{project.title}</p>}
+          </div>
+          <button onClick={onClose} style={{ padding: "6px 10px", background: "transparent", border: `1px solid ${P.border}`, borderRadius: 7, color: P.textMut, cursor: "pointer", fontSize: 18, lineHeight: 1 }}>×</button>
+        </div>
+
+        {/* Scrollable body */}
+        <div style={{ overflowY: "auto", padding: "24px 28px", flex: 1 }}>
+
+          {/* === BLOQUE 1: Información básica === */}
+          <div style={{ marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${P.border}` }}>
+            <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 14 }}>Información básica</p>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              <Field label="Título" value={data.title} onChange={set("title")} placeholder="Nombre del proyecto" />
+              <Field label="Tag (badge corto)" value={data.tag} onChange={set("tag")} placeholder="UX · Fintech" />
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              <div style={{ marginBottom: 12 }}>
+                <label style={{ display: "block", fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>Categoría</label>
+                <select
+                  value={data.category}
+                  onChange={e => set("category")(e.target.value)}
+                  style={{ width: "100%", padding: "9px 12px", background: P.bgAlt, border: `1px solid ${P.border}`, borderRadius: 7, color: P.text, fontFamily: F.body, fontSize: 13, outline: "none" }}
+                >
+                  {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
+                </select>
+              </div>
+              <div style={{ marginBottom: 12 }}>
+                <label style={{ display: "block", fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>Color del proyecto</label>
+                <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
+                  {COLORS.map(c => (
+                    <button
+                      key={c}
+                      onClick={() => set("color")(c)}
+                      style={{ width: 24, height: 24, borderRadius: "50%", background: c, border: data.color === c ? "2px solid #fff" : "2px solid transparent", cursor: "pointer", outline: "none", transition: "transform 0.15s", transform: data.color === c ? "scale(1.2)" : "scale(1)" }}
+                      title={c}
+                    />
+                  ))}
+                  <input
+                    type="color"
+                    value={data.color}
+                    onChange={e => set("color")(e.target.value)}
+                    style={{ width: 24, height: 24, borderRadius: "50%", border: "none", background: "none", cursor: "pointer", padding: 0 }}
+                    title="Color personalizado"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <Field label="URL miniatura (thumb)" value={data.thumb} onChange={set("thumb")} placeholder="https://..." />
+            <Field label="URL Behance / caso de estudio" value={data.url} onChange={set("url")} placeholder="https://behance.net/..." />
+          </div>
+
+          {/* === BLOQUE 2: Resumen del caso === */}
+          <div style={{ marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${P.border}` }}>
+            <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 14 }}>Resumen del caso</p>
+
+            <Field label="Hook (descripción breve visible en la tarjeta)" value={data.hook} onChange={set("hook")} multiline placeholder="Una frase que capture la esencia del proyecto..." />
+            <Field label="Impacto (resultado clave medible)" value={data.impact} onChange={set("impact")} placeholder="+40% conversión · NPS 62" />
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              <Field label="Rol" value={data.role} onChange={set("role")} placeholder="Lead UX Designer" />
+              <Field label="Empresa / Cliente" value={data.company} onChange={set("company")} placeholder="dale! — Grupo Aval" />
+            </div>
+
+            <TagInput label="Herramientas (Enter para agregar)" tags={data.tools || []} onChange={set("tools")} />
+          </div>
+
+          {/* === BLOQUE 3: Detalle del caso === */}
+          <div style={{ marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${P.border}` }}>
+            <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 14 }}>Detalle del caso de estudio</p>
+
+            <Field label="Contexto del proyecto" value={data.context} onChange={set("context")} multiline placeholder="¿Cuál era el problema o desafío?" />
+            <Field label="Audiencia / Usuarios objetivo" value={data.audience} onChange={set("audience")} multiline placeholder="¿Quiénes son los usuarios?" />
+            <Field label="Mi rol en detalle" value={data.roleDetail} onChange={set("roleDetail")} multiline placeholder="¿Qué hice exactamente?" />
+          </div>
+
+          {/* === BLOQUE 4: Proceso === */}
+          <div style={{ marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${P.border}` }}>
+            <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 14 }}>Proceso de diseño</p>
+            <ProcessSteps steps={data.process || []} onChange={set("process")} />
+          </div>
+
+          {/* === BLOQUE 5: Resultados === */}
+          <div style={{ marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${P.border}` }}>
+            <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 14 }}>Solución y resultados</p>
+            <Field label="Solución propuesta" value={data.solution} onChange={set("solution")} multiline placeholder="¿Cómo resolviste el problema?" />
+            <Field label="Resultados obtenidos" value={data.results} onChange={set("results")} multiline placeholder="Métricas, impacto, feedback..." />
+            <Field label="Aprendizajes" value={data.learning} onChange={set("learning")} multiline placeholder="¿Qué aprendiste o cambiarías?" />
+          </div>
+
+          {/* === BLOQUE 6: Imágenes finales === */}
+          <div>
+            <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 6 }}>Pantallas finales / galería</p>
+            <p style={{ fontSize: 12, color: P.textMut, fontFamily: F.body, marginBottom: 14 }}>Imágenes que aparecen en la sección "Diseño final" del caso de estudio.</p>
+            <ImageGallery label="Imágenes del proyecto" images={data.images || []} onChange={set("images")} />
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div style={{ padding: "18px 28px", borderTop: `1px solid ${P.border}`, display: "flex", justifyContent: "flex-end", gap: 10, flexShrink: 0 }}>
+          <button onClick={onClose} style={{ padding: "10px 22px", background: "transparent", color: P.textSec, border: `1px solid ${P.border}`, borderRadius: 8, cursor: "pointer", fontFamily: F.body, fontSize: 13 }}>
+            Cancelar
+          </button>
+          <button
+            onClick={handleSave}
+            disabled={saving || !data.title.trim()}
+            style={{ padding: "10px 28px", background: saving || !data.title.trim() ? P.textMut : P.accent, color: "#fff", border: "none", borderRadius: 8, fontWeight: 600, fontSize: 13, cursor: saving ? "wait" : !data.title.trim() ? "not-allowed" : "pointer", fontFamily: F.body, transition: "background 0.2s" }}
+          >
+            {saving ? "Guardando..." : isNew ? "Crear proyecto" : "Guardar cambios"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
