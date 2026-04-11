@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ContentProvider } from "./contexts/ContentContext";
+import { LangProvider } from "./contexts/LangContext";
 import { useAdmin } from "./admin/useAdmin";
 import Portfolio from "./Portfolio";
 import Login from "./admin/Login";
@@ -22,7 +23,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={
           <ContentProvider>
-            <Portfolio />
+            <LangProvider>
+              <Portfolio />
+            </LangProvider>
           </ContentProvider>
         } />
         <Route path="/admin" element={
