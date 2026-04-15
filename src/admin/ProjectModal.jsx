@@ -154,7 +154,7 @@ function ImageGallery({ label, images, onChange }) {
         <p style={{ fontSize: 12, color: P.textMut, margin: 0, fontFamily: F.body }}>
           {uploading ? "Subiendo imágenes..." : "Arrastra imágenes aquí o haz clic para seleccionar"}
         </p>
-        <p style={{ fontSize: 11, color: `${P.textMut}70`, margin: "4px 0 0", fontFamily: F.body }}>JPG, PNG, WebP, GIF · Máx 10 MB por imagen</p>
+        <p style={{ fontSize: 11, color: `${P.textMut}70`, margin: "4px 0 0", fontFamily: F.body }}>JPG, PNG, WebP · Máx 10 MB · Recomendado 1280 × 720 px</p>
       </div>
 
       {/* URL input */}
@@ -190,9 +190,13 @@ function StepImageField({ stepId, value, onChange }) {
 
   return (
     <div style={{ marginTop: 6 }}>
-      <label style={{ display: "block", fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>
-        Imagen del paso (opcional)
-      </label>
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
+        <label style={{ fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1 }}>Imagen del paso (opcional)</label>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: `${P.accentSoft}`, border: `1px solid ${P.accent}25`, borderRadius: 5, padding: "3px 8px" }}>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={P.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span style={{ fontSize: 10, color: P.accentLight, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>1200 × 675 px · 16:9</span>
+        </div>
+      </div>
       <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
         <input
           value={value}
@@ -325,6 +329,10 @@ export default function ProjectModal({ project, onSave, onClose, saving }) {
             </div>
 
             <Field label="URL miniatura (thumb)" value={data.thumb} onChange={set("thumb")} placeholder="https://..." />
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: `${P.accentSoft}`, border: `1px solid ${P.accent}25`, borderRadius: 6, padding: "4px 10px", marginTop: -8, marginBottom: 14 }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={P.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span style={{ fontSize: 10, color: P.accentLight, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>Recomendado: 1200 × 750 px · Proporción 16:10 · JPG/WebP</span>
+            </div>
             <Field label="URL Behance / caso de estudio" value={data.url} onChange={set("url")} placeholder="https://behance.net/..." />
           </div>
 
@@ -369,7 +377,11 @@ export default function ProjectModal({ project, onSave, onClose, saving }) {
           {/* === BLOQUE 6: Imágenes finales === */}
           <div>
             <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 6 }}>Pantallas finales / galería</p>
-            <p style={{ fontSize: 12, color: P.textMut, fontFamily: F.body, marginBottom: 14 }}>Imágenes que aparecen en la sección "Diseño final" del caso de estudio.</p>
+            <p style={{ fontSize: 12, color: P.textMut, fontFamily: F.body, marginBottom: 8 }}>Imágenes que aparecen en la sección "Diseño final" del caso de estudio.</p>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: `${P.accentSoft}`, border: `1px solid ${P.accent}25`, borderRadius: 6, padding: "4px 10px", marginBottom: 12 }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={P.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span style={{ fontSize: 10, color: P.accentLight, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>Recomendado: 1280 × 720 px · Proporción 16:9 · PNG/JPG/WebP</span>
+            </div>
             <ImageGallery label="Imágenes del proyecto" images={data.images || []} onChange={set("images")} />
           </div>
         </div>

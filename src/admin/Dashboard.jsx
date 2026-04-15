@@ -165,7 +165,11 @@ function GeneralSection({ content, onSave }) {
       {/* Imagen de fondo para Template G */}
       <div style={{ marginBottom: 20, padding: "16px 18px", background: P.surface, borderRadius: 10, border: `1px solid ${P.border}` }}>
         <div style={{ fontSize: 11, color: P.accent, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>Imagen de portada (Template G)</div>
-        <div style={{ fontSize: 11, color: P.textMut, marginBottom: 12 }}>Solo se usa en el template "Fotográfico". Sube una foto o pega la URL.</div>
+        <div style={{ fontSize: 11, color: P.textMut, marginBottom: 6 }}>Solo se usa en el template "Fotográfico". Sube una foto o pega la URL.</div>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: `${P.accent}10`, border: `1px solid ${P.accent}25`, borderRadius: 6, padding: "4px 10px", marginBottom: 12 }}>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={P.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span style={{ fontSize: 10, color: P.accent, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>Recomendado: 1920 × 1080 px · Proporción 16:9 · JPG/WebP</span>
+        </div>
         <div style={{ display: "flex", gap: 8, alignItems: "flex-end" }}>
           <div style={{ flex: 1 }}>
             <Field label="URL de imagen" value={hero.heroImage || ""} onChange={v => { setHero(h => ({ ...h, heroImage: v })); setUploadErr(""); }} placeholder="https://... o /uploads/foto.jpg" />
