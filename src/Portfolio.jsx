@@ -18,6 +18,13 @@ const F = {
   mono: "'JetBrains Mono', monospace",
 };
 
+/* Returns the _en variant of a field when lang === "en", falls back to base field */
+function pick(obj, field, lang) {
+  if (!obj) return "";
+  if (lang === "en" && obj[field + "_en"] !== undefined) return obj[field + "_en"];
+  return obj[field] ?? "";
+}
+
 function useNav(t) {
   return [
     { id: "home", label: t.nav_home },
@@ -525,8 +532,8 @@ function HomePage({ goTo, hero, stats }) {
         )}
         <Fade delay={460}>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <button onClick={() => goTo("portfolio")} style={{ padding: "16px 40px", background: P.accent, color: "#fff", borderRadius: 12, border: "none", fontWeight: 600, fontSize: 15, cursor: "pointer", boxShadow: `0 4px 32px ${P.accentGlow}`, fontFamily: F.body, transition: "opacity 0.2s, transform 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "0.88"; e.currentTarget.style.transform = "translateY(-1px)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0)"; }}>Ver portafolio</button>
-            <button onClick={() => goTo("contact")} style={{ padding: "16px 40px", background: "transparent", color: P.text, borderRadius: 12, border: `1px solid ${P.border}`, fontWeight: 500, fontSize: 15, cursor: "pointer", fontFamily: F.body, transition: "border-color 0.2s, background 0.2s" }} onMouseEnter={e => { e.currentTarget.style.borderColor = P.borderHov; e.currentTarget.style.background = "rgba(255,255,255,0.03)"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = P.border; e.currentTarget.style.background = "transparent"; }}>Contacto</button>
+            <button onClick={() => goTo("portfolio")} style={{ padding: "16px 40px", background: P.accent, color: "#fff", borderRadius: 12, border: "none", fontWeight: 600, fontSize: 15, cursor: "pointer", boxShadow: `0 4px 32px ${P.accentGlow}`, fontFamily: F.body, transition: "opacity 0.2s, transform 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "0.88"; e.currentTarget.style.transform = "translateY(-1px)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0)"; }}>{t.btn_view_portfolio}</button>
+            <button onClick={() => goTo("contact")} style={{ padding: "16px 40px", background: "transparent", color: P.text, borderRadius: 12, border: `1px solid ${P.border}`, fontWeight: 500, fontSize: 15, cursor: "pointer", fontFamily: F.body, transition: "border-color 0.2s, background 0.2s" }} onMouseEnter={e => { e.currentTarget.style.borderColor = P.borderHov; e.currentTarget.style.background = "rgba(255,255,255,0.03)"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = P.border; e.currentTarget.style.background = "transparent"; }}>{t.btn_contact}</button>
           </div>
         </Fade>
       </div>
@@ -570,8 +577,8 @@ function HomePage({ goTo, hero, stats }) {
         )}
         <Fade delay={460}>
           <div style={{ display: "flex", gap: 14, justifyContent: "flex-start", flexWrap: "wrap" }}>
-            <button onClick={() => goTo("portfolio")} style={{ padding: "16px 40px", background: P.accent, color: "#fff", borderRadius: 12, border: "none", fontWeight: 600, fontSize: 15, cursor: "pointer", boxShadow: `0 4px 32px ${P.accentGlow}`, fontFamily: F.body, transition: "opacity 0.2s, transform 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "0.88"; e.currentTarget.style.transform = "translateY(-1px)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0)"; }}>Ver portafolio</button>
-            <button onClick={() => goTo("contact")} style={{ padding: "16px 40px", background: "transparent", color: P.text, borderRadius: 12, border: `1px solid ${P.border}`, fontWeight: 500, fontSize: 15, cursor: "pointer", fontFamily: F.body, transition: "border-color 0.2s, background 0.2s" }} onMouseEnter={e => { e.currentTarget.style.borderColor = P.borderHov; e.currentTarget.style.background = "rgba(255,255,255,0.03)"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = P.border; e.currentTarget.style.background = "transparent"; }}>Contacto</button>
+            <button onClick={() => goTo("portfolio")} style={{ padding: "16px 40px", background: P.accent, color: "#fff", borderRadius: 12, border: "none", fontWeight: 600, fontSize: 15, cursor: "pointer", boxShadow: `0 4px 32px ${P.accentGlow}`, fontFamily: F.body, transition: "opacity 0.2s, transform 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "0.88"; e.currentTarget.style.transform = "translateY(-1px)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0)"; }}>{t.btn_view_portfolio}</button>
+            <button onClick={() => goTo("contact")} style={{ padding: "16px 40px", background: "transparent", color: P.text, borderRadius: 12, border: `1px solid ${P.border}`, fontWeight: 500, fontSize: 15, cursor: "pointer", fontFamily: F.body, transition: "border-color 0.2s, background 0.2s" }} onMouseEnter={e => { e.currentTarget.style.borderColor = P.borderHov; e.currentTarget.style.background = "rgba(255,255,255,0.03)"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = P.border; e.currentTarget.style.background = "transparent"; }}>{t.btn_contact}</button>
           </div>
         </Fade>
       </div>
@@ -617,8 +624,8 @@ function HomePage({ goTo, hero, stats }) {
         )}
         <Fade delay={460}>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <button onClick={() => goTo("portfolio")} style={{ padding: "16px 40px", background: P.accent, color: "#fff", borderRadius: 12, border: "none", fontWeight: 600, fontSize: 15, cursor: "pointer", boxShadow: `0 4px 32px ${P.accentGlow}`, fontFamily: F.body, transition: "opacity 0.2s, transform 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "0.88"; e.currentTarget.style.transform = "translateY(-1px)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0)"; }}>Ver portafolio</button>
-            <button onClick={() => goTo("contact")} style={{ padding: "16px 40px", background: "transparent", color: P.text, borderRadius: 12, border: `1px solid ${P.border}`, fontWeight: 500, fontSize: 15, cursor: "pointer", fontFamily: F.body, transition: "border-color 0.2s, background 0.2s" }} onMouseEnter={e => { e.currentTarget.style.borderColor = P.borderHov; e.currentTarget.style.background = "rgba(255,255,255,0.03)"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = P.border; e.currentTarget.style.background = "transparent"; }}>Contacto</button>
+            <button onClick={() => goTo("portfolio")} style={{ padding: "16px 40px", background: P.accent, color: "#fff", borderRadius: 12, border: "none", fontWeight: 600, fontSize: 15, cursor: "pointer", boxShadow: `0 4px 32px ${P.accentGlow}`, fontFamily: F.body, transition: "opacity 0.2s, transform 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "0.88"; e.currentTarget.style.transform = "translateY(-1px)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0)"; }}>{t.btn_view_portfolio}</button>
+            <button onClick={() => goTo("contact")} style={{ padding: "16px 40px", background: "transparent", color: P.text, borderRadius: 12, border: `1px solid ${P.border}`, fontWeight: 500, fontSize: 15, cursor: "pointer", fontFamily: F.body, transition: "border-color 0.2s, background 0.2s" }} onMouseEnter={e => { e.currentTarget.style.borderColor = P.borderHov; e.currentTarget.style.background = "rgba(255,255,255,0.03)"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = P.border; e.currentTarget.style.background = "transparent"; }}>{t.btn_contact}</button>
           </div>
         </Fade>
       </div>
@@ -716,8 +723,8 @@ function AboutPage({ about, skills, aiTools, methods, experiences, education, sh
         </Fade>
         <Fade delay={80}>
           <div style={{ maxWidth: 660, marginBottom: 64 }}>
-            <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: "0 0 16px" }}>{about?.bio1}</p>
-            <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: 0 }}>{about?.bio2}</p>
+            <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: "0 0 16px" }}>{pick(about, "bio1", lang)}</p>
+            <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: 0 }}>{pick(about, "bio2", lang)}</p>
           </div>
         </Fade>
 
@@ -779,15 +786,15 @@ function AboutPage({ about, skills, aiTools, methods, experiences, education, sh
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 8, marginBottom: 8 }}>
                     <div>
                       <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                        <h3 style={{ fontSize: 16, fontWeight: 700, margin: 0, fontFamily: F.display }}>{ex.role}</h3>
-                        {ex.tag && <Tag color={P.mint} style={{ fontSize: 9, padding: "2px 8px" }}>{ex.tag}</Tag>}
+                        <h3 style={{ fontSize: 16, fontWeight: 700, margin: 0, fontFamily: F.display }}>{pick(ex, "role", lang)}</h3>
+                        {(pick(ex, "tag", lang) || ex.tag) && <Tag color={P.mint} style={{ fontSize: 9, padding: "2px 8px" }}>{pick(ex, "tag", lang)}</Tag>}
                       </div>
                       <p style={{ fontSize: 14, color: ex.color, margin: "4px 0 0", fontWeight: 600 }}>{ex.co}</p>
                     </div>
-                    <span style={{ fontSize: 11, color: P.textMut, fontFamily: F.mono, background: "rgba(255,255,255,0.03)", padding: "4px 12px", borderRadius: 6 }}>{ex.period}</span>
+                    <span style={{ fontSize: 11, color: P.textMut, fontFamily: F.mono, background: "rgba(255,255,255,0.03)", padding: "4px 12px", borderRadius: 6 }}>{pick(ex, "period", lang)}</span>
                   </div>
-                  <Tag color={P.textMut} bg="rgba(255,255,255,0.03)" style={{ marginBottom: 10 }}>{ex.type}</Tag>
-                  <p style={{ fontSize: 14, color: P.textSec, lineHeight: 1.75, margin: "8px 0 0" }}>{ex.desc}</p>
+                  <Tag color={P.textMut} bg="rgba(255,255,255,0.03)" style={{ marginBottom: 10 }}>{pick(ex, "type", lang)}</Tag>
+                  <p style={{ fontSize: 14, color: P.textSec, lineHeight: 1.75, margin: "8px 0 0" }}>{pick(ex, "desc", lang)}</p>
                 </Card>
               </div>
             </Fade>
@@ -805,8 +812,8 @@ function AboutPage({ about, skills, aiTools, methods, experiences, education, sh
                 <Card style={{ padding: "28px 24px", position: "relative", overflow: "hidden", height: "100%", display: "flex", flexDirection: "column", boxSizing: "border-box" }}>
                   <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, ${P.accent}, ${P.mint})` }} />
                   <span style={{ fontSize: 32, fontWeight: 800, color: `${P.accent}`, opacity: 0.22, fontFamily: F.mono, flexShrink: 0 }}>{ed.yr}</span>
-                  <h3 style={{ fontSize: 15, fontWeight: 700, margin: "12px 0 8px", lineHeight: 1.4, fontFamily: F.display, flex: 1 }}>{ed.t}</h3>
-                  <p style={{ fontSize: 13, color: P.textMut, margin: 0, flexShrink: 0 }}>{ed.place}</p>
+                  <h3 style={{ fontSize: 15, fontWeight: 700, margin: "12px 0 8px", lineHeight: 1.4, fontFamily: F.display, flex: 1 }}>{pick(ed, "t", lang)}</h3>
+                  <p style={{ fontSize: 13, color: P.textMut, margin: 0, flexShrink: 0 }}>{pick(ed, "place", lang)}</p>
                 </Card>
               </Fade>
             ))}
@@ -854,8 +861,8 @@ function CaseStudyPage({ project: p, onBack }) {
         </Fade>
 
         <Fade delay={80}>
-          <p style={{ fontSize: 18, color: P.text, fontWeight: 500, lineHeight: 1.6, margin: "0 0 20px", fontFamily: F.display }}>{p.hook}</p>
-          <Tag color={P.textSec} bg="rgba(255,255,255,0.04)">{p.impact}</Tag>
+          <p style={{ fontSize: 18, color: P.text, fontWeight: 500, lineHeight: 1.6, margin: "0 0 20px", fontFamily: F.display }}>{pick(p, "hook", lang)}</p>
+          <Tag color={P.textSec} bg="rgba(255,255,255,0.04)">{pick(p, "impact", lang)}</Tag>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 12, margin: "20px 0 48px" }}>
             <Card style={{ padding: "16px 18px" }}>
               <div style={{ fontSize: 10, color: P.textMut, textTransform: "uppercase", letterSpacing: 1, fontFamily: F.mono, marginBottom: 6 }}>{tr.cs_role}</div>
@@ -879,10 +886,10 @@ function CaseStudyPage({ project: p, onBack }) {
           <div style={{ marginBottom: 48 }}>
             <Sec num="01" text={tr.sec_context} />
             <h2 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 16px", fontFamily: F.display }}>{tr.cs_context_q}</h2>
-            <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: "0 0 14px" }}>{p.context}</p>
+            <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: "0 0 14px" }}>{pick(p, "context", lang)}</p>
             <Card style={{ padding: "18px 22px", borderLeft: `3px solid ${p.color}` }}>
               <div style={{ fontSize: 10, color: p.color, textTransform: "uppercase", letterSpacing: 1, fontFamily: F.mono, marginBottom: 6, fontWeight: 600 }}>{tr.cs_audience}</div>
-              <p style={{ fontSize: 14, color: P.textSec, lineHeight: 1.7, margin: 0 }}>{p.audience}</p>
+              <p style={{ fontSize: 14, color: P.textSec, lineHeight: 1.7, margin: 0 }}>{pick(p, "audience", lang)}</p>
             </Card>
           </div>
         </Fade>
@@ -892,7 +899,7 @@ function CaseStudyPage({ project: p, onBack }) {
           <div style={{ marginBottom: 48 }}>
             <Sec num="02" text={tr.sec_my_role} />
             <h2 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 16px", fontFamily: F.display }}>{tr.cs_role_q}</h2>
-            <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: 0 }}>{p.roleDetail}</p>
+            <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: 0 }}>{pick(p, "roleDetail", lang)}</p>
           </div>
         </Fade>
 
@@ -911,8 +918,8 @@ function CaseStudyPage({ project: p, onBack }) {
                         {String(i + 1).padStart(2, "0")}
                       </div>
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 10px", fontFamily: F.display }}>{step.title}</h3>
-                        <p style={{ fontSize: 14, color: P.textSec, lineHeight: 1.8, margin: 0 }}>{step.desc}</p>
+                        <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 10px", fontFamily: F.display }}>{pick(step, "title", lang)}</h3>
+                        <p style={{ fontSize: 14, color: P.textSec, lineHeight: 1.8, margin: 0 }}>{pick(step, "desc", lang)}</p>
                         {step.image && (
                           <div style={{ marginTop: 16, borderRadius: 10, overflow: "hidden", border: `1px solid ${P.border}` }}>
                             <img src={step.image} alt={`Imagen: ${step.title}`} loading="lazy" style={{ width: "100%", display: "block", objectFit: "cover" }} />
@@ -938,7 +945,7 @@ function CaseStudyPage({ project: p, onBack }) {
           <div style={{ marginBottom: 48 }}>
             <Sec num="04" text={tr.sec_solution} />
             <h2 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 16px", fontFamily: F.display }}>{tr.cs_solution_title}</h2>
-            <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: "0 0 20px" }}>{p.solution}</p>
+            <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: "0 0 20px" }}>{pick(p, "solution", lang)}</p>
             {p.images && p.images.length > 0 ? (
               <div style={{ display: "grid", gridTemplateColumns: p.images.length === 1 ? "1fr" : "repeat(auto-fill, minmax(280px, 1fr))", gap: 12 }}>
                 {p.images.map((src, i) => (
@@ -959,11 +966,11 @@ function CaseStudyPage({ project: p, onBack }) {
             <Sec num="05" text={tr.sec_results} />
             <h2 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 16px", fontFamily: F.display }}>{tr.cs_results_q}</h2>
             <Card style={{ padding: "24px 24px", borderLeft: `3px solid ${P.mint}`, marginBottom: 16 }}>
-              <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: 0 }}>{p.results}</p>
+              <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: 0 }}>{pick(p, "results", lang)}</p>
             </Card>
             <Card style={{ padding: "24px 24px", background: `${p.color}08`, borderColor: `${p.color}18` }}>
               <div style={{ fontSize: 10, color: p.color, textTransform: "uppercase", letterSpacing: 1, fontFamily: F.mono, marginBottom: 8, fontWeight: 600 }}>{tr.cs_learning}</div>
-              <p style={{ fontSize: 14, color: P.textSec, lineHeight: 1.8, margin: 0, fontStyle: "italic" }}>{p.learning}</p>
+              <p style={{ fontSize: 14, color: P.textSec, lineHeight: 1.8, margin: 0, fontStyle: "italic" }}>{pick(p, "learning", lang)}</p>
             </Card>
           </div>
         </Fade>
@@ -1056,7 +1063,7 @@ function PortfolioPage({ onSelect, projects = [], processSteps }) {
                 <div style={{ padding: "20px 22px 24px", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                   <div>
                     <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 8px", lineHeight: 1.3, fontFamily: F.display }}>{proj.title}</h3>
-                    <p style={{ fontSize: 13, color: P.textSec, lineHeight: 1.65, margin: "0 0 16px" }}>{proj.hook}</p>
+                    <p style={{ fontSize: 13, color: P.textSec, lineHeight: 1.65, margin: "0 0 16px" }}>{pick(proj, "hook", lang)}</p>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     <span style={{ fontSize: 11, color: P.textMut, fontFamily: F.mono }}>{proj.company.split("→").pop().trim()}</span>
@@ -1096,7 +1103,7 @@ function PortfolioPage({ onSelect, projects = [], processSteps }) {
                   <Tag color={proj.color}>{proj.tag}</Tag>
                 </div>
                 <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 6px", fontFamily: F.display, lineHeight: 1.3, color: isH ? P.text : P.text }}>{proj.title}</h3>
-                <p style={{ fontSize: 13, color: P.textSec, lineHeight: 1.6, margin: "0 0 8px" }}>{proj.hook}</p>
+                <p style={{ fontSize: 13, color: P.textSec, lineHeight: 1.6, margin: "0 0 8px" }}>{pick(proj, "hook", lang)}</p>
                 <span style={{ fontSize: 11, color: P.textMut, fontFamily: F.mono }}>{proj.role} · {proj.company.split("→").pop().trim()}</span>
               </div>
               {/* Arrow */}
@@ -1156,7 +1163,7 @@ function PortfolioPage({ onSelect, projects = [], processSteps }) {
                   <div style={{ padding: "14px 16px 18px", flex: 1, display: "flex", flexDirection: "column" }}>
                     <Tag color={proj.color} style={{ marginBottom: 8 }}>{proj.tag}</Tag>
                     <h3 style={{ fontSize: 14, fontWeight: 700, margin: "0 0 5px", lineHeight: 1.3, fontFamily: F.display }}>{proj.title}</h3>
-                    <p style={{ fontSize: 12, color: P.textMut, margin: 0, lineHeight: 1.55 }}>{proj.hook}</p>
+                    <p style={{ fontSize: 12, color: P.textMut, margin: 0, lineHeight: 1.55 }}>{pick(proj, "hook", lang)}</p>
                   </div>
                 </article>
               </Fade>
@@ -1184,7 +1191,7 @@ function PortfolioPage({ onSelect, projects = [], processSteps }) {
                 <div>
                   <Tag color={proj.color}>{proj.tag}</Tag>
                   <h3 style={{ fontSize: 17, fontWeight: 700, margin: "10px 0 8px", lineHeight: 1.3, fontFamily: F.display }}>{proj.title}</h3>
-                  <p style={{ fontSize: 13, color: P.textSec, lineHeight: 1.6, margin: "0 0 10px" }}>{proj.hook}</p>
+                  <p style={{ fontSize: 13, color: P.textSec, lineHeight: 1.6, margin: "0 0 10px" }}>{pick(proj, "hook", lang)}</p>
                 </div>
                 <p style={{ fontSize: 11, color: P.textMut, margin: 0, fontFamily: F.mono }}>{proj.role} · {proj.company.split("→").pop().trim()}</p>
               </div>
@@ -1211,12 +1218,12 @@ function PortfolioPage({ onSelect, projects = [], processSteps }) {
               <div style={{ padding: "22px 26px 26px", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
                   <h3 style={{ fontSize: 20, fontWeight: 700, margin: "0 0 10px", lineHeight: 1.25, fontFamily: F.display }}>{proj.title}</h3>
-                  <p style={{ fontSize: 14, color: P.textSec, lineHeight: 1.7, margin: "0 0 18px" }}>{proj.hook}</p>
+                  <p style={{ fontSize: 14, color: P.textSec, lineHeight: 1.7, margin: "0 0 18px" }}>{pick(proj, "hook", lang)}</p>
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <span style={{ fontSize: 12, color: P.textMut, fontFamily: F.mono }}>{proj.role} · {proj.company.split("→").pop().trim()}</span>
                   <span style={{ fontSize: 12, color: proj.color, fontWeight: 700, display: "flex", alignItems: "center", gap: 4, opacity: isH ? 1 : 0, transition: "opacity 0.25s" }}>
-                    Ver caso <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                    {t.see_case} <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
                   </span>
                 </div>
               </div>
@@ -1231,8 +1238,8 @@ function PortfolioPage({ onSelect, projects = [], processSteps }) {
   const ProcessSection = () => (
     <div style={{ marginTop: 88 }}>
       <Fade>
-        <Sec num="02" text="Proceso" />
-        <h2 style={{ fontSize: "clamp(28px,4vw,42px)", fontWeight: 800, letterSpacing: "-0.03em", margin: "0 0 44px", fontFamily: F.display }}>Mi enfoque de diseño</h2>
+        <Sec num="02" text={lang === "en" ? "Process" : "Proceso"} />
+        <h2 style={{ fontSize: "clamp(28px,4vw,42px)", fontWeight: 800, letterSpacing: "-0.03em", margin: "0 0 44px", fontFamily: F.display }}>{lang === "en" ? "My design approach" : "Mi enfoque de diseño"}</h2>
       </Fade>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 14, alignItems: "stretch" }}>
         {(processSteps || []).map((step, i) => (
@@ -1242,8 +1249,8 @@ function PortfolioPage({ onSelect, projects = [], processSteps }) {
               <div style={{ width: 40, height: 40, borderRadius: 10, margin: "0 auto 14px", background: `${step.c}12`, border: `1px solid ${step.c}18`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <span style={{ fontSize: 12, fontWeight: 700, color: step.c, fontFamily: F.mono }}>{step.s}</span>
               </div>
-              <h4 style={{ fontSize: 14, fontWeight: 700, margin: "0 0 8px", fontFamily: F.display, flexShrink: 0 }}>{step.t}</h4>
-              <p style={{ fontSize: 12, color: P.textMut, margin: 0, lineHeight: 1.55, flex: 1 }}>{step.d}</p>
+              <h4 style={{ fontSize: 14, fontWeight: 700, margin: "0 0 8px", fontFamily: F.display, flexShrink: 0 }}>{pick(step, "t", lang)}</h4>
+              <p style={{ fontSize: 12, color: P.textMut, margin: 0, lineHeight: 1.55, flex: 1 }}>{pick(step, "d", lang)}</p>
             </Card>
           </Fade>
         ))}
@@ -1277,7 +1284,7 @@ function ContactPage({ contact }) {
   const contacts = contact?.items || [];
 
   /* Maps contact label to icon key */
-  const labelToIconKey = { "Email": "email", "LinkedIn": "linkedin", "Behance": "behance", "Teléfono": "phone", "Ubicación": "location" };
+  const labelToIconKey = { "Email": "email", "LinkedIn": "linkedin", "Behance": "behance", "Teléfono": "phone", "Phone": "phone", "Ubicación": "location", "Location": "location" };
 
   /* SVG icons — replaces emoji/unicode symbols */
   const icons = {
@@ -1295,9 +1302,9 @@ function ContactPage({ contact }) {
           <div style={{ textAlign: "center", marginBottom: 52 }}>
             <Sec num="01" text={t.sec_contact} />
             <h2 style={{ fontSize: "clamp(32px,5vw,48px)", fontWeight: 800, letterSpacing: "-0.03em", margin: "12px 0 14px", fontFamily: F.display }}>
-              {contact?.title || "¿Trabajamos juntos?"}
+              {pick(contact, "title", lang) || (lang === "en" ? "Let's work together?" : "¿Trabajamos juntos?")}
             </h2>
-            <p style={{ fontSize: 15, color: P.textSec, maxWidth: 460, lineHeight: 1.75, margin: "0 auto" }}>{contact?.subtitle || "Disponible para proyectos remotos."}</p>
+            <p style={{ fontSize: 15, color: P.textSec, maxWidth: 460, lineHeight: 1.75, margin: "0 auto" }}>{pick(contact, "subtitle", lang) || (lang === "en" ? "Available for remote projects." : "Disponible para proyectos remotos.")}</p>
           </div>
         </Fade>
 
@@ -1317,11 +1324,11 @@ function ContactPage({ contact }) {
                   style={{ display: "flex", alignItems: "center", gap: 18, background: isHov && c.href ? P.cardHover : P.card, borderRadius: 14, padding: "18px 24px", border: `1px solid ${isHov && c.href ? `${c.color}25` : P.border}`, textDecoration: "none", color: P.text, transition: "all 0.25s cubic-bezier(.22,1,.36,1)", cursor: c.href ? "pointer" : "default", transform: isHov && c.href ? "translateX(4px)" : "none" }}
                 >
                   <span style={{ width: 46, height: 46, borderRadius: 12, flexShrink: 0, background: isHov && c.href ? `${c.color}18` : `${c.color}10`, border: `1px solid ${c.color}${isHov ? "30" : "15"}`, display: "flex", alignItems: "center", justifyContent: "center", color: c.color, transition: "all 0.25s" }}>
-                    {icons[labelToIconKey[c.label]] || null}
+                    {icons[labelToIconKey[pick(c, "label", lang)] || labelToIconKey[c.label]] || null}
                   </span>
                   <div>
-                    <div style={{ fontSize: 10, color: P.textMut, textTransform: "uppercase", letterSpacing: 1, marginBottom: 3, fontFamily: F.mono, fontWeight: 600 }}>{c.label}</div>
-                    <div style={{ fontSize: 15, fontWeight: 500, color: isHov && c.href ? c.color : P.text, transition: "color 0.25s" }}>{c.value}</div>
+                    <div style={{ fontSize: 10, color: P.textMut, textTransform: "uppercase", letterSpacing: 1, marginBottom: 3, fontFamily: F.mono, fontWeight: 600 }}>{pick(c, "label", lang)}</div>
+                    <div style={{ fontSize: 15, fontWeight: 500, color: isHov && c.href ? c.color : P.text, transition: "color 0.25s" }}>{pick(c, "value", lang)}</div>
                   </div>
                   {c.href && (
                     <div style={{ marginLeft: "auto", opacity: isHov ? 1 : 0, transition: "opacity 0.2s", color: c.color }}>
