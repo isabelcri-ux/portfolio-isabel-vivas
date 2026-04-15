@@ -329,7 +329,7 @@ function HomePage({ goTo, hero, stats }) {
             {hero?.available && (
               <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: `${P.mint}08`, padding: "7px 18px", borderRadius: 100, border: `1px solid ${P.mint}18`, marginBottom: 36 }}>
                 <span style={{ width: 6, height: 6, borderRadius: "50%", background: P.mint, boxShadow: `0 0 8px ${P.mint}`, animation: reduced ? "none" : "pulse 2s ease infinite" }} />
-                <span style={{ fontSize: 10, color: P.mint, fontWeight: 600, letterSpacing: 2.5, fontFamily: F.mono, textTransform: "uppercase" }}>{hero.availableText || t.available}</span>
+                <span style={{ fontSize: 10, color: P.mint, fontWeight: 600, letterSpacing: 2.5, fontFamily: F.mono, textTransform: "uppercase" }}>{pick(hero, 'availableText', lang) || t.available}</span>
               </div>
             )}
           </Fade>
@@ -342,10 +342,10 @@ function HomePage({ goTo, hero, stats }) {
           <Fade delay={180}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
               <div style={{ width: 28, height: 1, background: P.accent }} />
-              <span style={{ fontSize: 15, color: P.textSec, fontWeight: 400 }}>{hero?.role || "Senior UX Designer"}</span>
+              <span style={{ fontSize: 15, color: P.textSec, fontWeight: 400 }}>{pick(hero, 'role', lang) || "Senior UX Designer"}</span>
             </div>
             <p style={{ fontSize: 14, color: P.textMut, maxWidth: 420, lineHeight: 1.9, margin: "0 0 44px" }}>
-              {hero?.bio || "+10 años creando productos digitales en fintech y entornos de alto impacto."}
+              {pick(hero, 'bio', lang) || (lang === 'en' ? "+10 years building digital products in fintech and high-impact environments." : "+10 años creando productos digitales en fintech y entornos de alto impacto.")}
             </p>
           </Fade>
           <Fade delay={260}>
@@ -374,7 +374,7 @@ function HomePage({ goTo, hero, stats }) {
                 {stats.map(st => (
                   <div key={st.id} style={{ textAlign: "center" }}>
                     <div style={{ fontSize: "clamp(30px,3.5vw,44px)", fontWeight: 800, color: P.text, fontFamily: F.mono, lineHeight: 1 }}>{st.value}{st.suffix}</div>
-                    <div style={{ fontSize: 10, color: P.textMut, marginTop: 8, textTransform: "uppercase", letterSpacing: 1.5, fontFamily: F.mono }}>{st.label}</div>
+                    <div style={{ fontSize: 10, color: P.textMut, marginTop: 8, textTransform: "uppercase", letterSpacing: 1.5, fontFamily: F.mono }}>{pick(st, 'label', lang)}</div>
                   </div>
                 ))}
               </div>
@@ -399,7 +399,7 @@ function HomePage({ goTo, hero, stats }) {
               {hero?.available && (
                 <>
                   <span style={{ width: 6, height: 6, borderRadius: "50%", background: P.mint, animation: reduced ? "none" : "pulse 2s ease infinite" }} />
-                  <span style={{ fontSize: 10, color: P.mint, fontWeight: 600, letterSpacing: 2.5, fontFamily: F.mono, textTransform: "uppercase" }}>{hero.availableText || t.available}</span>
+                  <span style={{ fontSize: 10, color: P.mint, fontWeight: 600, letterSpacing: 2.5, fontFamily: F.mono, textTransform: "uppercase" }}>{pick(hero, 'availableText', lang) || t.available}</span>
                   <span style={{ width: 1, height: 14, background: P.border }} />
                 </>
               )}
@@ -415,18 +415,18 @@ function HomePage({ goTo, hero, stats }) {
           <div style={{ height: 1, background: `linear-gradient(90deg, ${P.accent}80, ${P.mint}40, transparent)`, marginBottom: 28, maxWidth: 640, animation: "drawLine 1.2s cubic-bezier(.22,1,.36,1) 0.4s both", overflow: "hidden" }} />
           <Fade delay={160}>
             <div style={{ display: "flex", alignItems: "baseline", gap: 36, marginBottom: 40, flexWrap: "wrap" }}>
-              <span style={{ fontSize: "clamp(16px,2vw,20px)", color: P.textSec, fontWeight: 300, fontFamily: F.display, letterSpacing: 0.3 }}>{hero?.role || "Senior UX Designer"}</span>
+              <span style={{ fontSize: "clamp(16px,2vw,20px)", color: P.textSec, fontWeight: 300, fontFamily: F.display, letterSpacing: 0.3 }}>{pick(hero, 'role', lang) || "Senior UX Designer"}</span>
               {(stats || []).slice(0, 3).map(st => (
                 <span key={st.id} style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
                   <strong style={{ color: P.text, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 800, fontFamily: F.mono, lineHeight: 1 }}>{st.value}{st.suffix}</strong>
-                  <span style={{ fontSize: 11, color: P.textMut, fontFamily: F.mono }}>{st.label}</span>
+                  <span style={{ fontSize: 11, color: P.textMut, fontFamily: F.mono }}>{pick(st, 'label', lang)}</span>
                 </span>
               ))}
             </div>
           </Fade>
           <Fade delay={220}>
             <p style={{ fontSize: 15, color: P.textMut, maxWidth: 500, lineHeight: 1.9, marginBottom: 48 }}>
-              {hero?.bio || "+10 años creando productos digitales en fintech y entornos de alto impacto."}
+              {pick(hero, 'bio', lang) || (lang === 'en' ? "+10 years building digital products in fintech and high-impact environments." : "+10 años creando productos digitales en fintech y entornos de alto impacto.")}
             </p>
             <div style={{ display: "flex", gap: 12 }}>
               <button onClick={() => goTo("portfolio")} style={{ padding: "14px 38px", background: P.accent, color: "#fff", borderRadius: 6, border: "none", fontWeight: 700, fontSize: 13, cursor: "pointer", fontFamily: F.body, letterSpacing: 0.8, textTransform: "uppercase", transition: "opacity 0.2s, transform 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "0.88"; e.currentTarget.style.transform = "translateY(-1px)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0)"; }}>
@@ -456,7 +456,7 @@ function HomePage({ goTo, hero, stats }) {
           {hero?.available && (
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 52 }}>
               <div style={{ height: 1, width: 36, background: `linear-gradient(90deg, transparent, ${P.accent})` }} />
-              <span style={{ fontSize: 10, color: P.accent, fontWeight: 700, letterSpacing: 3, fontFamily: F.mono, textTransform: "uppercase" }}>{hero.availableText || t.available}</span>
+              <span style={{ fontSize: 10, color: P.accent, fontWeight: 700, letterSpacing: 3, fontFamily: F.mono, textTransform: "uppercase" }}>{pick(hero, 'availableText', lang) || t.available}</span>
               <div style={{ height: 1, width: 36, background: `linear-gradient(90deg, ${P.accent}, transparent)` }} />
             </div>
           )}
@@ -468,15 +468,15 @@ function HomePage({ goTo, hero, stats }) {
           </h1>
         </Fade>
         <Fade delay={180}>
-          <p style={{ fontSize: "clamp(14px,1.8vw,17px)", color: P.textSec, margin: "0 auto 14px", fontFamily: F.display, fontWeight: 300, letterSpacing: 0.5 }}>{hero?.role || "Senior UX Designer"}</p>
+          <p style={{ fontSize: "clamp(14px,1.8vw,17px)", color: P.textSec, margin: "0 auto 14px", fontFamily: F.display, fontWeight: 300, letterSpacing: 0.5 }}>{pick(hero, 'role', lang) || "Senior UX Designer"}</p>
           <p style={{ fontSize: 14, color: P.textMut, maxWidth: 460, margin: "0 auto 48px", lineHeight: 1.9 }}>
-            {hero?.bio || "+10 años creando productos digitales en fintech y entornos de alto impacto."}
+            {pick(hero, 'bio', lang) || (lang === 'en' ? "+10 years building digital products in fintech and high-impact environments." : "+10 años creando productos digitales en fintech y entornos de alto impacto.")}
           </p>
         </Fade>
         {stats && stats.length > 0 && (
           <Fade delay={230}>
             <div style={{ display: "flex", justifyContent: "center", gap: 40, marginBottom: 52, flexWrap: "wrap" }}>
-              {stats.map(st => <AnimStat key={st.id} value={st.value} suffix={st.suffix} label={st.label} />)}
+              {stats.map(st => <AnimStat key={st.id} value={st.value} suffix={st.suffix} label={pick(st, 'label', lang)} />)}
             </div>
           </Fade>
         )}
@@ -505,7 +505,7 @@ function HomePage({ goTo, hero, stats }) {
           {hero?.available && (
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: `${P.mint}08`, padding: "8px 22px", borderRadius: 100, border: `1px solid ${P.mint}12`, marginBottom: 40 }}>
               <span style={{ width: 7, height: 7, borderRadius: "50%", background: P.mint, boxShadow: `0 0 10px ${P.mint}`, animation: reduced ? "none" : "pulse 2s ease infinite" }} />
-              <span style={{ fontSize: 11, color: P.mint, fontWeight: 600, letterSpacing: 2, fontFamily: F.mono, textTransform: "uppercase" }}>{hero.availableText || t.available}</span>
+              <span style={{ fontSize: 11, color: P.mint, fontWeight: 600, letterSpacing: 2, fontFamily: F.mono, textTransform: "uppercase" }}>{pick(hero, 'availableText', lang) || t.available}</span>
             </div>
           )}
         </Fade>
@@ -517,16 +517,16 @@ function HomePage({ goTo, hero, stats }) {
         </Fade>
         <Fade delay={220}>
           <p style={{ fontSize: "clamp(16px,2vw,20px)", color: P.textSec, fontWeight: 400, margin: "0 0 12px", display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
-            <span style={{ width: 20, height: 1, background: P.accent }} /> {hero?.role || "Senior UX Designer"} <span style={{ width: 20, height: 1, background: P.mint }} />
+            <span style={{ width: 20, height: 1, background: P.accent }} /> {pick(hero, 'role', lang) || "Senior UX Designer"} <span style={{ width: 20, height: 1, background: P.mint }} />
           </p>
         </Fade>
         <Fade delay={300}>
-          <p style={{ fontSize: 15, color: P.textMut, maxWidth: 520, margin: "0 auto 56px", lineHeight: 1.85 }}>{hero?.bio || "+10 años creando productos digitales en fintech y entornos de alto impacto."}</p>
+          <p style={{ fontSize: 15, color: P.textMut, maxWidth: 520, margin: "0 auto 56px", lineHeight: 1.85 }}>{pick(hero, 'bio', lang) || (lang === 'en' ? "+10 years building digital products in fintech and high-impact environments." : "+10 años creando productos digitales en fintech y entornos de alto impacto.")}</p>
         </Fade>
         {stats && stats.length > 0 && (
           <Fade delay={380}>
             <div style={{ display: "grid", gridTemplateColumns: stats.map(() => "1fr").join(" auto "), gap: 0, maxWidth: 480, margin: "0 auto 60px", padding: "28px 24px", borderRadius: 16, background: "rgba(255,255,255,0.02)", border: `1px solid ${P.border}` }}>
-              {stats.flatMap((st, i) => { const items = [<AnimStat key={st.id} value={st.value} suffix={st.suffix} label={st.label} />]; if (i < stats.length - 1) items.push(<div key={`sep-${i}`} style={{ width: 1, background: P.border, margin: "4px 12px" }} />); return items; })}
+              {stats.flatMap((st, i) => { const items = [<AnimStat key={st.id} value={st.value} suffix={st.suffix} label={pick(st, 'label', lang)} />]; if (i < stats.length - 1) items.push(<div key={`sep-${i}`} style={{ width: 1, background: P.border, margin: "4px 12px" }} />); return items; })}
             </div>
           </Fade>
         )}
@@ -550,7 +550,7 @@ function HomePage({ goTo, hero, stats }) {
           {hero?.available && (
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: `${P.mint}08`, padding: "8px 22px", borderRadius: 100, border: `1px solid ${P.mint}12`, marginBottom: 40 }}>
               <span style={{ width: 7, height: 7, borderRadius: "50%", background: P.mint, boxShadow: `0 0 10px ${P.mint}`, animation: reduced ? "none" : "pulse 2s ease infinite" }} />
-              <span style={{ fontSize: 11, color: P.mint, fontWeight: 600, letterSpacing: 2, fontFamily: F.mono, textTransform: "uppercase" }}>{hero.availableText || t.available}</span>
+              <span style={{ fontSize: 11, color: P.mint, fontWeight: 600, letterSpacing: 2, fontFamily: F.mono, textTransform: "uppercase" }}>{pick(hero, 'availableText', lang) || t.available}</span>
             </div>
           )}
         </Fade>
@@ -562,16 +562,16 @@ function HomePage({ goTo, hero, stats }) {
         </Fade>
         <Fade delay={220}>
           <p style={{ fontSize: "clamp(16px,2vw,20px)", color: P.textSec, fontWeight: 400, margin: "0 0 12px", display: "flex", alignItems: "center", justifyContent: "flex-start", gap: 12 }}>
-            <span style={{ width: 20, height: 1, background: P.accent }} /> {hero?.role || "Senior UX Designer"} <span style={{ width: 20, height: 1, background: P.mint }} />
+            <span style={{ width: 20, height: 1, background: P.accent }} /> {pick(hero, 'role', lang) || "Senior UX Designer"} <span style={{ width: 20, height: 1, background: P.mint }} />
           </p>
         </Fade>
         <Fade delay={300}>
-          <p style={{ fontSize: 15, color: P.textMut, maxWidth: 520, margin: "0 0 56px", lineHeight: 1.85 }}>{hero?.bio || "+10 años creando productos digitales en fintech y entornos de alto impacto."}</p>
+          <p style={{ fontSize: 15, color: P.textMut, maxWidth: 520, margin: "0 0 56px", lineHeight: 1.85 }}>{pick(hero, 'bio', lang) || (lang === 'en' ? "+10 years building digital products in fintech and high-impact environments." : "+10 años creando productos digitales en fintech y entornos de alto impacto.")}</p>
         </Fade>
         {stats && stats.length > 0 && (
           <Fade delay={380}>
             <div style={{ display: "grid", gridTemplateColumns: stats.map(() => "1fr").join(" auto "), gap: 0, maxWidth: 480, margin: "0 0 60px", padding: "28px 24px", borderRadius: 16, background: "rgba(255,255,255,0.02)", border: `1px solid ${P.border}` }}>
-              {stats.flatMap((st, i) => { const items = [<AnimStat key={st.id} value={st.value} suffix={st.suffix} label={st.label} />]; if (i < stats.length - 1) items.push(<div key={`sep-${i}`} style={{ width: 1, background: P.border, margin: "4px 12px" }} />); return items; })}
+              {stats.flatMap((st, i) => { const items = [<AnimStat key={st.id} value={st.value} suffix={st.suffix} label={pick(st, 'label', lang)} />]; if (i < stats.length - 1) items.push(<div key={`sep-${i}`} style={{ width: 1, background: P.border, margin: "4px 12px" }} />); return items; })}
             </div>
           </Fade>
         )}
@@ -595,7 +595,7 @@ function HomePage({ goTo, hero, stats }) {
           {hero?.available && (
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: `${P.mint}08`, padding: "8px 22px", borderRadius: 100, border: `1px solid ${P.mint}12`, marginBottom: 40 }}>
               <span style={{ width: 7, height: 7, borderRadius: "50%", background: P.mint, boxShadow: `0 0 10px ${P.mint}`, animation: reduced ? "none" : "pulse 2s ease infinite" }} />
-              <span style={{ fontSize: 11, color: P.mint, fontWeight: 600, letterSpacing: 2, fontFamily: F.mono, textTransform: "uppercase" }}>{hero.availableText || t.available}</span>
+              <span style={{ fontSize: 11, color: P.mint, fontWeight: 600, letterSpacing: 2, fontFamily: F.mono, textTransform: "uppercase" }}>{pick(hero, 'availableText', lang) || t.available}</span>
             </div>
           )}
         </Fade>
@@ -608,17 +608,17 @@ function HomePage({ goTo, hero, stats }) {
         <Fade delay={220}>
           <div style={{ height: 1, background: `linear-gradient(90deg, transparent, ${P.accent}, transparent)`, marginBottom: 14 }} />
           <p style={{ fontSize: "clamp(16px,2vw,20px)", color: P.textSec, fontWeight: 400, margin: "0 0 12px", display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
-            <span style={{ width: 20, height: 1, background: P.accent }} /> {hero?.role || "Senior UX Designer"} <span style={{ width: 20, height: 1, background: P.mint }} />
+            <span style={{ width: 20, height: 1, background: P.accent }} /> {pick(hero, 'role', lang) || "Senior UX Designer"} <span style={{ width: 20, height: 1, background: P.mint }} />
           </p>
           <div style={{ height: 1, background: `linear-gradient(90deg, transparent, ${P.accent}, transparent)`, marginTop: 14 }} />
         </Fade>
         <Fade delay={300}>
-          <p style={{ fontSize: 15, color: P.textMut, maxWidth: 520, margin: "0 auto 56px", lineHeight: 1.85 }}>{hero?.bio || "+10 años creando productos digitales en fintech y entornos de alto impacto."}</p>
+          <p style={{ fontSize: 15, color: P.textMut, maxWidth: 520, margin: "0 auto 56px", lineHeight: 1.85 }}>{pick(hero, 'bio', lang) || (lang === 'en' ? "+10 years building digital products in fintech and high-impact environments." : "+10 años creando productos digitales en fintech y entornos de alto impacto.")}</p>
         </Fade>
         {stats && stats.length > 0 && (
           <Fade delay={380}>
             <div style={{ display: "grid", gridTemplateColumns: stats.map(() => "1fr").join(" auto "), gap: 0, maxWidth: 480, margin: "0 auto 60px", padding: "28px 24px", borderRadius: 16, background: "rgba(255,255,255,0.02)", border: `1px solid ${P.border}` }}>
-              {stats.flatMap((st, i) => { const items = [<AnimStat key={st.id} value={st.value} suffix={st.suffix} label={st.label} />]; if (i < stats.length - 1) items.push(<div key={`sep-${i}`} style={{ width: 1, background: P.border, margin: "4px 12px" }} />); return items; })}
+              {stats.flatMap((st, i) => { const items = [<AnimStat key={st.id} value={st.value} suffix={st.suffix} label={pick(st, 'label', lang)} />]; if (i < stats.length - 1) items.push(<div key={`sep-${i}`} style={{ width: 1, background: P.border, margin: "4px 12px" }} />); return items; })}
             </div>
           </Fade>
         )}
@@ -658,7 +658,7 @@ function HomePage({ goTo, hero, stats }) {
           {hero?.available && (
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(0,0,0,0.4)", backdropFilter: "blur(12px)", padding: "7px 18px", borderRadius: 100, border: `1px solid ${P.mint}30`, marginBottom: 28 }}>
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: P.mint, animation: reduced ? "none" : "pulse 2s ease infinite" }} />
-              <span style={{ fontSize: 10, color: P.mint, fontWeight: 600, letterSpacing: 2.5, fontFamily: F.mono, textTransform: "uppercase" }}>{hero.availableText || t.available}</span>
+              <span style={{ fontSize: 10, color: P.mint, fontWeight: 600, letterSpacing: 2.5, fontFamily: F.mono, textTransform: "uppercase" }}>{pick(hero, 'availableText', lang) || t.available}</span>
             </div>
           )}
         </Fade>
@@ -669,8 +669,8 @@ function HomePage({ goTo, hero, stats }) {
           </h1>
         </Fade>
         <Fade delay={150}>
-          <p style={{ fontSize: "clamp(15px,1.8vw,19px)", color: "rgba(255,255,255,0.7)", fontWeight: 300, margin: "0 0 14px", letterSpacing: 0.3 }}>{hero?.role || "Senior UX Designer"}</p>
-          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", maxWidth: 480, lineHeight: 1.85, margin: "0 0 44px" }}>{hero?.bio || "+10 años creando productos digitales en fintech y entornos de alto impacto."}</p>
+          <p style={{ fontSize: "clamp(15px,1.8vw,19px)", color: "rgba(255,255,255,0.7)", fontWeight: 300, margin: "0 0 14px", letterSpacing: 0.3 }}>{pick(hero, 'role', lang) || "Senior UX Designer"}</p>
+          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", maxWidth: 480, lineHeight: 1.85, margin: "0 0 44px" }}>{pick(hero, 'bio', lang) || (lang === 'en' ? "+10 years building digital products in fintech and high-impact environments." : "+10 años creando productos digitales en fintech y entornos de alto impacto.")}</p>
         </Fade>
         {stats && stats.length > 0 && (
           <Fade delay={200}>
@@ -678,7 +678,7 @@ function HomePage({ goTo, hero, stats }) {
               {stats.map(st => (
                 <div key={st.id}>
                   <div style={{ fontSize: "clamp(24px,3vw,36px)", fontWeight: 800, color: "#fff", fontFamily: F.mono, lineHeight: 1 }}>{st.value}{st.suffix}</div>
-                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginTop: 6, textTransform: "uppercase", letterSpacing: 1.5, fontFamily: F.mono }}>{st.label}</div>
+                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginTop: 6, textTransform: "uppercase", letterSpacing: 1.5, fontFamily: F.mono }}>{pick(st, 'label', lang)}</div>
                 </div>
               ))}
             </div>
@@ -1552,7 +1552,7 @@ function PortfolioInner({ content, loading }) {
       {/* ── FOOTER ── */}
       <footer style={{ textAlign: "center", padding: "36px 24px", borderTop: `1px solid ${P.border}` }}>
         <p style={{ fontSize: 12, color: P.textMut, fontFamily: F.mono }}>{content?.footer?.name || "Isabel Cristina Vivas Henao"} © {content?.footer?.year || new Date().getFullYear()}</p>
-        <p style={{ fontSize: 11, color: `${P.textMut}80`, marginTop: 6 }}>{content?.footer?.role || "Senior UX Designer"} · {content?.footer?.location || "Colombia"}</p>
+        <p style={{ fontSize: 11, color: `${P.textMut}80`, marginTop: 6 }}>{pick(content?.footer, 'role', lang) || "Senior UX Designer"} · {content?.footer?.location || "Colombia"}</p>
       </footer>
     </div>
   );
