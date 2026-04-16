@@ -1,5 +1,10 @@
 import { useState } from "react";
 
+/* Detecta si una URL es un video por extensión o tipo MIME */
+function isVideo(url = "") {
+  return /\.(mp4|webm|mov|mkv|avi|ogv|m4v)(\?.*)?$/i.test(url);
+}
+
 const P = {
   bg: "#060609", bgAlt: "#0B0B12", card: "#10101A", surface: "#161622",
   accent: "#7C6AF3", accentLight: "#9B8DF7", accentSoft: "rgba(124,106,243,0.10)",
@@ -116,12 +121,19 @@ function ImageGallery({ label, images, onChange }) {
     <div style={{ marginBottom: 12 }}>
       <label style={{ display: "block", fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>{label}</label>
 
-      {/* Existing images */}
+      {/* Existing items */}
       {(images || []).length > 0 && (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: 8, marginBottom: 10 }}>
           {images.map((url, i) => (
             <div key={i} style={{ position: "relative", borderRadius: 8, overflow: "hidden", border: `1px solid ${P.border}`, aspectRatio: "16/9", background: P.bgAlt }}>
-              <img src={url} alt={`img-${i}`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} loading="lazy" />
+              {isVideo(url) ? (
+                <>
+                  <video src={url} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} muted playsInline />
+                  <div style={{ position: "absolute", bottom: 4, left: 4, background: "rgba(0,0,0,0.65)", borderRadius: 4, padding: "2px 6px", fontSize: 9, color: "#fff", fontFamily: F.mono, fontWeight: 600 }}>VIDEO</div>
+                </>
+              ) : (
+                <img src={url} alt={`img-${i}`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} loading="lazy" />
+              )}
               <button onClick={() => remove(i)} style={{ position: "absolute", top: 4, right: 4, width: 22, height: 22, borderRadius: "50%", background: "rgba(0,0,0,0.7)", border: "none", color: "#fff", cursor: "pointer", fontSize: 13, lineHeight: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>×</button>
             </div>
           ))}
@@ -145,16 +157,23 @@ function ImageGallery({ label, images, onChange }) {
         <input
           id="gallery-file-input"
           type="file"
-          accept="image/*"
+          accept="image/*,video/mp4,video/webm,video/quicktime,video/x-matroska"
           multiple
           style={{ display: "none" }}
           onChange={e => handleFiles(e.target.files)}
         />
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={P.textMut} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: "0 auto 8px", display: "block" }}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={P.textMut} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: "0 auto 6px", display: "block" }}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
         <p style={{ fontSize: 12, color: P.textMut, margin: 0, fontFamily: F.body }}>
-          {uploading ? "Subiendo imágenes..." : "Arrastra imágenes aquí o haz clic para seleccionar"}
+          {uploading ? "Subiendo archivos..." : "Arrastra imágenes o videos aquí, o haz clic"}
         </p>
-        <p style={{ fontSize: 11, color: `${P.textMut}70`, margin: "4px 0 0", fontFamily: F.body }}>JPG, PNG, WebP · Máx 10 MB · Recomendado 1280 × 720 px</p>
+        <div style={{ display: "flex", justifyContent: "center", gap: 10, marginTop: 8, flexWrap: "wrap" }}>
+          <span style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, background: `${P.accent}12`, border: `1px solid ${P.accent}25`, borderRadius: 5, padding: "3px 8px" }}>
+            📷 Imagen · 1280×720px · JPG/PNG/WebP · Máx 10 MB
+          </span>
+          <span style={{ fontSize: 10, color: P.mint, fontFamily: F.mono, background: `${P.mint}10`, border: `1px solid ${P.mint}25`, borderRadius: 5, padding: "3px 8px" }}>
+            🎬 Video · 1920×1080px · MP4/WebM/MOV · Máx 500 MB
+          </span>
+        </div>
       </div>
 
       {/* URL input */}
@@ -165,7 +184,7 @@ function ImageGallery({ label, images, onChange }) {
           onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); addUrl(); } }}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          placeholder="O pega una URL de imagen..."
+          placeholder="O pega una URL de imagen o video..."
           style={{ flex: 1, padding: "8px 12px", background: P.bgAlt, border: `1px solid ${focused ? P.accent : P.border}`, borderRadius: 7, color: P.text, fontFamily: F.body, fontSize: 12, outline: "none" }}
         />
         <button onClick={addUrl} disabled={!newUrl.trim()} style={{ padding: "8px 14px", background: newUrl.trim() ? P.accentSoft : "transparent", color: newUrl.trim() ? P.accentLight : P.textMut, border: `1px solid ${P.accent}30`, borderRadius: 7, cursor: newUrl.trim() ? "pointer" : "default", fontFamily: F.body, fontSize: 12, fontWeight: 600, whiteSpace: "nowrap" }}>
@@ -190,11 +209,13 @@ function StepImageField({ stepId, value, onChange }) {
 
   return (
     <div style={{ marginTop: 6 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-        <label style={{ fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1 }}>Imagen del paso (opcional)</label>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, flexWrap: "wrap" }}>
+        <label style={{ fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1 }}>Imagen / Video del paso (opcional)</label>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: `${P.accentSoft}`, border: `1px solid ${P.accent}25`, borderRadius: 5, padding: "3px 8px" }}>
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={P.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span style={{ fontSize: 10, color: P.accentLight, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>1200 × 675 px · 16:9</span>
+          <span style={{ fontSize: 10, color: P.accentLight, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>📷 1200×675px · 16:9</span>
+        </div>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: `${P.mint}10`, border: `1px solid ${P.mint}25`, borderRadius: 5, padding: "3px 8px" }}>
+          <span style={{ fontSize: 10, color: P.mint, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>🎬 1920×1080px · MP4/WebM</span>
         </div>
       </div>
       <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
@@ -204,7 +225,7 @@ function StepImageField({ stepId, value, onChange }) {
           placeholder="URL o sube un archivo →"
           style={{ flex: 1, padding: "7px 10px", background: P.card, border: `1px solid ${P.border}`, borderRadius: 6, color: P.text, fontFamily: F.body, fontSize: 12, outline: "none" }}
         />
-        <input id={inputId} type="file" accept="image/*" style={{ display: "none" }} onChange={e => handleFile(e.target.files?.[0])} />
+        <input id={inputId} type="file" accept="image/*,video/mp4,video/webm,video/quicktime" style={{ display: "none" }} onChange={e => handleFile(e.target.files?.[0])} />
         <label
           htmlFor={inputId}
           style={{ padding: "7px 12px", background: P.accentSoft, color: uploading ? P.textMut : P.accentLight, border: `1px solid ${P.accent}30`, borderRadius: 6, cursor: uploading ? "wait" : "pointer", fontFamily: F.body, fontSize: 11, fontWeight: 600, whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 5 }}
@@ -214,7 +235,10 @@ function StepImageField({ stepId, value, onChange }) {
         </label>
         {value && (
           <div style={{ width: 52, height: 36, borderRadius: 6, overflow: "hidden", border: `1px solid ${P.border}`, flexShrink: 0 }}>
-            <img src={value} alt="preview" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
+            {isVideo(value)
+              ? <video src={value} style={{ width: "100%", height: "100%", objectFit: "cover" }} muted playsInline />
+              : <img src={value} alt="preview" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
+            }
           </div>
         )}
         {value && (

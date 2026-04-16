@@ -18,6 +18,11 @@ const F = {
   mono: "'JetBrains Mono', monospace",
 };
 
+/* Detecta si una URL es un video por extensión */
+function isVideo(url = "") {
+  return /\.(mp4|webm|mov|mkv|avi|ogv|m4v)(\?.*)?$/i.test(url);
+}
+
 /* Returns the _en variant of a field when lang === "en", falls back to base field */
 function pick(obj, field, lang) {
   if (!obj) return "";
@@ -922,7 +927,10 @@ function CaseStudyPage({ project: p, onBack }) {
                         <p style={{ fontSize: 14, color: P.textSec, lineHeight: 1.8, margin: 0 }}>{pick(step, "desc", lang)}</p>
                         {step.image && (
                           <div style={{ marginTop: 16, borderRadius: 10, overflow: "hidden", border: `1px solid ${P.border}` }}>
-                            <img src={step.image} alt={`Imagen: ${step.title}`} loading="lazy" style={{ width: "100%", display: "block", objectFit: "cover" }} />
+                            {isVideo(step.image)
+                              ? <video src={step.image} controls style={{ width: "100%", display: "block", maxHeight: 480 }} playsInline />
+                              : <img src={step.image} alt={`Imagen: ${step.title}`} loading="lazy" style={{ width: "100%", display: "block", objectFit: "cover" }} />
+                            }
                           </div>
                         )}
                       </div>
@@ -950,7 +958,10 @@ function CaseStudyPage({ project: p, onBack }) {
               <div style={{ display: "grid", gridTemplateColumns: p.images.length === 1 ? "1fr" : "repeat(auto-fill, minmax(280px, 1fr))", gap: 12 }}>
                 {p.images.map((src, i) => (
                   <div key={i} style={{ borderRadius: 12, overflow: "hidden", border: `1px solid ${P.border}` }}>
-                    <img src={src} alt={`${p.title} — pantalla ${i + 1}`} loading="lazy" style={{ width: "100%", display: "block", objectFit: "cover" }} />
+                    {isVideo(src)
+                      ? <video src={src} controls style={{ width: "100%", display: "block" }} playsInline />
+                      : <img src={src} alt={`${p.title} — pantalla ${i + 1}`} loading="lazy" style={{ width: "100%", display: "block", objectFit: "cover" }} />
+                    }
                   </div>
                 ))}
               </div>

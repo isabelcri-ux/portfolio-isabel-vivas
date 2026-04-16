@@ -4,8 +4,10 @@
     "lastName": "Vivas Henao",
     "role": "Senior UX Designer",
     "bio": "+10 años creando productos digitales en fintech y entornos de alto impacto. Especializada en investigación UX, Design Thinking y experiencias que generan impacto medible.",
+    "bio_en": "+10 years building digital products in fintech and high-impact environments. Specialized in UX research, Design Thinking and experiences that generate measurable impact.",
     "available": false,
     "availableText": "Disponible para proyectos",
+    "availableText_en": "Available for projects",
     "heroImage": ""
   },
   "stats": [
@@ -13,24 +15,29 @@
       "id": "s1",
       "value": "10",
       "suffix": "+",
-      "label": "Años exp."
+      "label": "Años exp.",
+      "label_en": "Yrs exp."
     },
     {
       "id": "s2",
       "value": "90.9",
       "suffix": "%",
-      "label": "INS dale!"
+      "label": "INS dale!",
+      "label_en": "INS dale!"
     },
     {
       "id": "s3",
       "value": "62",
       "suffix": "",
-      "label": "NPS dale!"
+      "label": "NPS dale!",
+      "label_en": "NPS dale!"
     }
   ],
   "about": {
     "bio1": "Senior UX Designer con Maestría en UX y más de 10 años de experiencia en diseño de productos digitales. Me especializo en investigación UX, Design Thinking y optimización de experiencias en entornos fintech y de alto impacto.",
-    "bio2": "Lidero procesos end-to-end de UX, alineando métricas de negocio, necesidades del usuario y viabilidad técnica. Actualmente en formación en Diseño y Creación con Inteligencia Artificial."
+    "bio1_en": "Senior UX Designer with an MA in UX and over 10 years of experience in digital product design. I specialize in UX research, Design Thinking and experience optimization in fintech and high-impact environments.",
+    "bio2": "Lidero procesos end-to-end de UX, alineando métricas de negocio, necesidades del usuario y viabilidad técnica. Actualmente en formación en Diseño y Creación con Inteligencia Artificial.",
+    "bio2_en": "I lead end-to-end UX processes, aligning business metrics, user needs and technical feasibility. Currently expanding into AI Design and Creation."
   },
   "skills": [
     {
@@ -105,69 +112,97 @@
       "role": "Senior UX Designer",
       "co": "dale! — Grupo Aval",
       "type": "Fintech · Banca Digital",
+      "type_en": "Fintech · Digital Banking",
       "period": "2022 — Presente",
+      "period_en": "2022 — Present",
       "desc": "Lideré el diseño end-to-end de una billetera digital con millones de usuarios, alcanzando un Índice Neto de Satisfacción del 90.9% y NPS del 62%. Optimicé flujos críticos de onboarding, pagos y autenticación.",
+      "desc_en": "Led the end-to-end design of a digital wallet with millions of users, achieving a Net Satisfaction Index of 90.9% and NPS of 62. Optimized critical onboarding, payment and authentication flows.",
       "color": "#7C6AF3",
-      "tag": "Actual"
+      "tag": "Actual",
+      "tag_en": "Current"
     },
     {
       "id": "ex2",
       "role": "Visual Designer",
       "co": "Multiplica — BBVA Perú",
       "type": "Banca Digital",
+      "type_en": "Digital Banking",
       "period": "2022",
+      "period_en": "2022",
       "desc": "Resolví problemas de consistencia visual adaptando componentes al Design System global de BBVA en +10 flujos. Embajadora de Design Thinking.",
+      "desc_en": "Solved visual consistency issues by adapting components to BBVA's global Design System across 10+ flows. Design Thinking ambassador.",
       "color": "#34D9A8",
-      "tag": ""
+      "tag": "",
+      "tag_en": ""
     },
     {
       "id": "ex3",
       "role": "UX Designer",
       "co": "Multiplica Talent (ADL)",
       "type": "Consultoría",
+      "type_en": "Consulting",
       "period": "2021 — 2022",
+      "period_en": "2021 — 2022",
       "desc": "Ejecuté procesos de investigación (entrevistas, encuestas, pruebas de usabilidad) para validar hipótesis y priorizar decisiones de diseño.",
+      "desc_en": "Executed research processes (interviews, surveys, usability testing) to validate hypotheses and prioritize design decisions.",
       "color": "#F06878",
-      "tag": ""
+      "tag": "",
+      "tag_en": ""
     },
     {
       "id": "ex4",
       "role": "Líder de Producción Digital",
+      "role_en": "Digital Production Lead",
       "co": "Identia — Agencia Digital",
       "type": "Agencia",
+      "type_en": "Agency",
       "period": "2019 — 2021",
+      "period_en": "2019 — 2021",
       "desc": "Lideré la creación de +15 productos digitales, coordinando equipos de diseño y desarrollo asegurando entregas dentro de plazos y estándares de calidad.",
+      "desc_en": "Led the creation of 15+ digital products, coordinating design and development teams ensuring delivery within deadlines and quality standards.",
       "color": "#E8A838",
-      "tag": ""
+      "tag": "",
+      "tag_en": ""
     },
     {
       "id": "ex5",
       "role": "Diseñadora Web & Apps Sr.",
+      "role_en": "Sr. Web & Apps Designer",
       "co": "Existaya.com",
       "type": "Agencia Digital",
+      "type_en": "Digital Agency",
       "period": "2013 — 2018",
+      "period_en": "2013 — 2018",
       "desc": "Diseñé experiencias web y móviles para campañas de fidelización mejorando retención y engagement en marcas de consumo masivo.",
+      "desc_en": "Designed web and mobile experiences for loyalty campaigns, improving retention and engagement for mass-market brands.",
       "color": "#7C6AF3",
-      "tag": ""
+      "tag": "",
+      "tag_en": ""
     }
   ],
   "education": [
     {
       "id": "ed1",
       "t": "Esp. Diseño y Creación con IA",
+      "t_en": "Spec. AI Design and Creation",
       "place": "UNIR · En curso",
+      "place_en": "UNIR · Ongoing",
       "yr": "2026"
     },
     {
       "id": "ed2",
       "t": "Maestría en Diseño UX",
+      "t_en": "Master's in UX Design",
       "place": "UNIR",
+      "place_en": "UNIR",
       "yr": "2017"
     },
     {
       "id": "ed3",
       "t": "Diseño de la Comunicación Gráfica",
+      "t_en": "Graphic Communication Design",
       "place": "U. Autónoma de Occidente",
+      "place_en": "U. Autónoma de Occidente",
       "yr": "2012"
     }
   ],
@@ -181,37 +216,61 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/4b26c0140904909.Y3JvcCwxNDAwLDEwOTUsMCww.png",
       "url": "https://www.behance.net/gallery/140904909/Friends-at-lunch",
       "hook": "Una app que transforma la hora del almuerzo en oportunidades de conexión real entre personas.",
+      "hook_en": "An app that transforms lunch break into real connection opportunities between people.",
       "impact": "App social · UX Research · Prototipo interactivo",
+      "impact_en": "Social App · UX Research · Interactive Prototype",
       "role": "Product Designer",
       "company": "Proyecto académico",
+      "company_en": "Academic project",
       "tools": [
         "Figma",
         "Miro",
         "Maze"
       ],
       "context": "En entornos laborales y universitarios, las personas suelen almorzar solas o con el mismo grupo reducido. Esto limita la creación de nuevas conexiones. El reto era diseñar una experiencia que facilitara encuentros sociales naturales durante la pausa de almuerzo.",
+      "context_en": "In work and university environments, people often eat lunch alone or with the same small group. This limits new connections. The challenge was to design an experience that facilitated natural social encounters during the lunch break.",
       "audience": "Profesionales jóvenes y estudiantes universitarios que buscan ampliar su red social de manera orgánica.",
+      "audience_en": "Young professionals and university students looking to expand their social network organically.",
       "roleDetail": "Lideré el proceso completo de diseño: desde la investigación inicial hasta el prototipo interactivo de alta fidelidad. Definí la estrategia de producto, realicé entrevistas con usuarios y diseñé todos los flujos e interfaces.",
+      "roleDetail_en": "I led the complete design process: from initial research to the high-fidelity interactive prototype. I defined the product strategy, conducted user interviews and designed all flows and interfaces.",
       "process": [
         {
           "id": "pr1",
           "title": "Discovery — Entendiendo el problema real",
-          "desc": "Realicé entrevistas a profundidad con usuarios para entender sus hábitos de almuerzo y barreras sociales. El hallazgo clave: la mayoría quería conocer gente nueva pero sentía incomodidad al dar el primer paso. Esto definió que la app debía reducir la fricción social."
+          "title_en": "Discovery — Understanding the real problem",
+          "desc": "Realicé entrevistas a profundidad con usuarios para entender sus hábitos de almuerzo y barreras sociales. El hallazgo clave: la mayoría quería conocer gente nueva pero sentía incomodidad al dar el primer paso. Esto definió que la app debía reducir la fricción social.",
+          "desc_en": "I conducted in-depth interviews with users to understand their lunch habits and social barriers. Key finding: most wanted to meet new people but felt uncomfortable taking the first step. This defined that the app had to reduce social friction.",
+          "image": "/uploads/1776286559689-7xkbvf.png"
         },
         {
           "id": "pr2",
           "title": "Ideación — De insight a concepto",
-          "desc": "Facilité sesiones de ideación usando How Might We y Crazy 8s. El concepto ganador fue un sistema de match basado en preferencias de almuerzo y cercanía, eliminando la presión de iniciar una conversación desde cero."
+          "title_en": "Ideation — From insight to concept",
+          "desc": "Facilité sesiones de ideación usando How Might We y Crazy 8s. El concepto ganador fue un sistema de match basado en preferencias de almuerzo y cercanía, eliminando la presión de iniciar una conversación desde cero.",
+          "desc_en": "I facilitated ideation sessions using How Might We and Crazy 8s. The winning concept was a match system based on lunch preferences and proximity, eliminating the pressure of starting a conversation from scratch.",
+          "image": "/uploads/1776286555401-6exr29.png"
         },
         {
           "id": "pr3",
           "title": "Validación — Testing con usuarios",
-          "desc": "Diseñé un prototipo interactivo en Figma y lo validé con usuarios usando Maze. Los resultados mostraron una alta tasa de completación del flujo principal con feedback positivo en la simplicidad del onboarding."
+          "title_en": "Validation — Testing with users",
+          "desc": "Diseñé un prototipo interactivo en Figma y lo validé con usuarios usando Maze. Los resultados mostraron una alta tasa de completación del flujo principal con feedback positivo en la simplicidad del onboarding.",
+          "desc_en": "I designed an interactive prototype in Figma and validated it with users using Maze. Results showed a high completion rate for the main flow with positive feedback on the simplicity of onboarding.",
+          "image": "/uploads/1776286531042-k8j69y.png"
         }
       ],
       "solution": "App móvil con onboarding simplificado, sistema de matching inteligente basado en ubicación y preferencias, y chat contextual que facilita la coordinación.",
+      "solution_en": "Mobile app with simplified onboarding, intelligent matching system based on location and preferences, and contextual chat that facilitates coordination.",
       "results": "Prototipo validado con usuarios reales con alta tasa de completación en el flujo principal. El proyecto demostró la viabilidad del concepto como case study completo de proceso UX.",
-      "learning": "En productos sociales, reducir la ansiedad del primer paso es más importante que agregar features. La simplicidad fue el diferenciador."
+      "results_en": "Prototype validated with real users with high completion rate in the main flow. The project demonstrated the viability of the concept as a complete UX process case study.",
+      "learning": "En productos sociales, reducir la ansiedad del primer paso es más importante que agregar features. La simplicidad fue el diferenciador.",
+      "learning_en": "In social products, reducing the anxiety of the first step is more important than adding features. Simplicity was the differentiator.",
+      "images": [
+        "/uploads/1776286538495-iy4got.png",
+        "/uploads/1776286542169-y4ywez.png",
+        "/uploads/1776286545148-14a5rs.png",
+        "/uploads/1776286547905-bsx31o.png"
+      ]
     },
     {
       "id": "buddy",
@@ -222,32 +281,45 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/59eb35140902127.Y3JvcCwxMDg4LDg1MSwwLDA.png",
       "url": "https://www.behance.net/gallery/140902127/BUDDY",
       "hook": "App de acompañamiento y conexión social diseñada para generar confianza desde el primer uso.",
+      "hook_en": "A social companion and connection app designed to build trust from the first use.",
       "impact": "Mobile App · Prototipo hi-fi · User Research",
+      "impact_en": "Mobile App · Hi-fi Prototype · User Research",
       "role": "UX/UI Designer",
       "company": "Proyecto académico",
+      "company_en": "Academic project",
       "tools": [
         "Figma",
         "FigJam",
         "Miro"
       ],
       "context": "Las personas en transición de vida (mudanzas, cambios de trabajo) enfrentan dificultades para construir nuevas relaciones significativas. Las apps existentes de networking se sentían transaccionales. El desafío: crear una experiencia que priorizara la autenticidad.",
+      "context_en": "People in life transitions (moving, job changes) face difficulties building new meaningful relationships. Existing networking apps felt transactional. The challenge: create an experience that prioritized authenticity.",
       "audience": "Adultos jóvenes (25-35) en transición de vida: mudanzas, cambios de trabajo o nuevas etapas.",
+      "audience_en": "Young adults (25-35) in life transitions: moves, job changes or new life stages.",
       "roleDetail": "Diseñé el producto completo desde la investigación hasta el prototipo. Definí la propuesta de valor, arquitectura de información y diseño visual.",
+      "roleDetail_en": "I designed the complete product from research to prototype. I defined the value proposition, information architecture and visual design.",
       "process": [
         {
           "id": "pr1",
           "title": "Research — Necesidades emocionales",
-          "desc": "Conduje investigación cualitativa con personas en transición social. El insight principal: los usuarios buscaban autenticidad por encima de cantidad de conexiones. Esto nos alejó de un modelo tipo 'swipe' hacia uno basado en intereses compartidos."
+          "title_en": "Research — Emotional needs",
+          "desc": "Conduje investigación cualitativa con personas en transición social. El insight principal: los usuarios buscaban autenticidad por encima de cantidad de conexiones. Esto nos alejó de un modelo tipo 'swipe' hacia uno basado en intereses compartidos.",
+          "desc_en": "I conducted qualitative research with people in social transition. Main insight: users sought authenticity over quantity of connections. This moved us away from a 'swipe' model toward one based on shared interests."
         },
         {
           "id": "pr2",
           "title": "Diseño para la confianza",
-          "desc": "Creé un onboarding progresivo que construye confianza gradualmente. Cada paso revela un poco más del perfil, incentivando la reciprocidad. La identidad visual cálida refuerza el posicionamiento: 'tu compañero en una nueva etapa'."
+          "title_en": "Designing for trust",
+          "desc": "Creé un onboarding progresivo que construye confianza gradualmente. Cada paso revela un poco más del perfil, incentivando la reciprocidad. La identidad visual cálida refuerza el posicionamiento: 'tu compañero en una nueva etapa'.",
+          "desc_en": "I created a progressive onboarding that builds trust gradually. Each step reveals a bit more of the profile, encouraging reciprocity. The warm visual identity reinforces the positioning: 'your companion in a new chapter'."
         }
       ],
       "solution": "App móvil con perfiles basados en intereses, matching por afinidad, y espacios de conversación diseñados para fomentar conexiones auténticas.",
+      "solution_en": "Mobile app with interest-based profiles, affinity matching, and conversation spaces designed to foster authentic connections.",
       "results": "Prototipo con feedback positivo en la experiencia de onboarding y la percepción de autenticidad de la marca.",
-      "learning": "La conexión emocional con el producto empieza en el primer contacto visual. El tono de la interfaz importa tanto como la funcionalidad."
+      "results_en": "Prototype with positive feedback on the onboarding experience and the brand's perceived authenticity.",
+      "learning": "La conexión emocional con el producto empieza en el primer contacto visual. El tono de la interfaz importa tanto como la funcionalidad.",
+      "learning_en": "The emotional connection with the product starts at the first visual contact. The tone of the interface matters as much as the functionality."
     },
     {
       "id": "keepay",
@@ -258,7 +330,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/3244e8121542323.Y3JvcCwxMTcxLDkxNSwwLDA.jpg",
       "url": "https://www.behance.net/gallery/121542323/UXUI-App-Keepay",
       "hook": "App fintech para gestión de pagos personales con una experiencia segura, intuitiva y transparente.",
+      "hook_en": "A fintech app for personal payment management with a secure, intuitive and transparent experience.",
       "impact": "Fintech · Mobile App · UX/UI",
+      "impact_en": "Fintech · Mobile App · UX/UI",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Keepay",
       "tools": [
@@ -266,23 +340,33 @@
         "Miro"
       ],
       "context": "Keepay buscaba posicionarse en el mercado fintech colombiano con una app de gestión de pagos diferenciada por su simplicidad. Los usuarios reportaban frustración con apps complicadas y poca transparencia en comisiones.",
+      "context_en": "Keepay sought to position itself in the Colombian fintech market with a payment management app differentiated by its simplicity. Users reported frustration with complicated apps and lack of transparency in fees.",
       "audience": "Adultos jóvenes (25-40), early adopters de tecnología financiera, buscando alternativas a la banca tradicional.",
+      "audience_en": "Young adults (25-40), early adopters of financial technology, seeking alternatives to traditional banking.",
       "roleDetail": "Diseñé la experiencia completa: flujos de onboarding, transacciones, dashboard financiero y notificaciones. Trabajé con el equipo de producto para definir la jerarquía de features.",
+      "roleDetail_en": "I designed the complete experience: onboarding flows, transactions, financial dashboard and notifications. I worked with the product team to define the feature hierarchy.",
       "process": [
         {
           "id": "pr1",
           "title": "Benchmark fintech",
-          "desc": "Analicé las principales apps fintech LATAM (Nequi, Daviplata, Mercado Pago) identificando patrones de éxito y puntos de dolor comunes. Keepay debía ser más simple y transparente."
+          "title_en": "Fintech benchmark",
+          "desc": "Analicé las principales apps fintech LATAM (Nequi, Daviplata, Mercado Pago) identificando patrones de éxito y puntos de dolor comunes. Keepay debía ser más simple y transparente.",
+          "desc_en": "I analyzed the main LATAM fintech apps (Nequi, Daviplata, Mercado Pago) identifying success patterns and common pain points. Keepay had to be simpler and more transparent."
         },
         {
           "id": "pr2",
           "title": "Flujos financieros transparentes",
-          "desc": "Diseñé flujos de transacción con confirmación visual en cada paso, mostrando claramente comisiones antes de confirmar. La transparencia fue el principio rector de cada pantalla."
+          "title_en": "Transparent financial flows",
+          "desc": "Diseñé flujos de transacción con confirmación visual en cada paso, mostrando claramente comisiones antes de confirmar. La transparencia fue el principio rector de cada pantalla.",
+          "desc_en": "I designed transaction flows with visual confirmation at each step, clearly showing fees before confirming. Transparency was the guiding principle of every screen."
         }
       ],
       "solution": "App fintech con onboarding simplificado, dashboard financiero claro, flujos de pago con transparencia total y autenticación biométrica.",
+      "solution_en": "Fintech app with simplified onboarding, clear financial dashboard, payment flows with full transparency and biometric authentication.",
       "results": "Diseño aprobado para desarrollo con feedback positivo sobre la claridad de los flujos financieros.",
-      "learning": "En fintech, la confianza se construye con transparencia. Cada dato oculto es una razón para que el usuario abandone."
+      "results_en": "Design approved for development with positive feedback on the clarity of financial flows.",
+      "learning": "En fintech, la confianza se construye con transparencia. Cada dato oculto es una razón para que el usuario abandone.",
+      "learning_en": "In fintech, trust is built with transparency. Every hidden piece of data is a reason for the user to leave."
     },
     {
       "id": "winny",
@@ -293,7 +377,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/0f6692121543245.Y3JvcCwxOTIwLDE1MDEsMCwxNDI.jpg",
       "url": "https://www.behance.net/gallery/121543245/UXUI-App-Winny",
       "hook": "App para mamás centrada en el cuidado del bebé, diseñada con research profundo para acompañar una etapa crucial.",
+      "hook_en": "A mom-focused baby care app, designed with deep research to accompany a crucial life stage.",
       "impact": "Mobile App · UX Research · User-centered design",
+      "impact_en": "Mobile App · UX Research · User-centered design",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Winny",
       "tools": [
@@ -302,28 +388,40 @@
         "Photoshop"
       ],
       "context": "Winny, marca líder de pañales en Colombia, quería fortalecer su relación con las mamás más allá del producto físico, acompañándolas durante las primeras etapas del bebé sin sentirse como una extensión publicitaria.",
+      "context_en": "Winny, a leading diaper brand in Colombia, wanted to strengthen its relationship with moms beyond the physical product, accompanying them during the baby's early stages without feeling like an advertising extension.",
       "audience": "Mamás primerizas y experimentadas (25-38 años), buscando guía confiable sobre desarrollo y cuidado de sus bebés.",
+      "audience_en": "First-time and experienced mothers (25-38 years), seeking reliable guidance on baby development and care.",
       "roleDetail": "Lideré el diseño UX/UI de la app. Conduje investigación con usuarios, definí la arquitectura de información y diseñé la interfaz completa.",
+      "roleDetail_en": "I led the UX/UI design of the app. I conducted user research, defined the information architecture and designed the complete interface.",
       "process": [
         {
           "id": "pr1",
           "title": "Research — Escuchando a las mamás",
-          "desc": "Entrevistas a profundidad con mamás en diferentes etapas de crianza. Insight principal: se sienten abrumadas con información contradictoria y buscan una fuente confiable organizada por etapa de desarrollo del bebé."
+          "title_en": "Research — Listening to moms",
+          "desc": "Entrevistas a profundidad con mamás en diferentes etapas de crianza. Insight principal: se sienten abrumadas con información contradictoria y buscan una fuente confiable organizada por etapa de desarrollo del bebé.",
+          "desc_en": "In-depth interviews with mothers at different parenting stages. Main insight: they feel overwhelmed with contradictory information and seek a reliable source organized by the baby's development stage."
         },
         {
           "id": "pr2",
           "title": "Contenido por etapas",
-          "desc": "Diseñé la app alrededor de un timeline de desarrollo del bebé, donde el contenido se organiza por edad/etapa. Esto eliminó la sobrecarga de información y creó una experiencia personalizada."
+          "title_en": "Content by stages",
+          "desc": "Diseñé la app alrededor de un timeline de desarrollo del bebé, donde el contenido se organiza por edad/etapa. Esto eliminó la sobrecarga de información y creó una experiencia personalizada.",
+          "desc_en": "I designed the app around a baby development timeline, where content is organized by age/stage. This eliminated information overload and created a personalized experience."
         },
         {
           "id": "pr3",
           "title": "Testing con mamás reales",
-          "desc": "Pruebas de usabilidad con mamás usando prototipos interactivos. Iteré el home screen basándome en feedback sobre la priorización de contenido."
+          "title_en": "Testing with real moms",
+          "desc": "Pruebas de usabilidad con mamás usando prototipos interactivos. Iteré el home screen basándome en feedback sobre la priorización de contenido.",
+          "desc_en": "Usability testing with mothers using interactive prototypes. I iterated the home screen based on feedback about content prioritization."
         }
       ],
       "solution": "App móvil con timeline personalizado por etapa del bebé, contenido editorial curado, herramientas prácticas e interfaz cálida y accesible.",
+      "solution_en": "Mobile app with personalized timeline by baby stage, curated editorial content, practical tools and warm, accessible interface.",
       "results": "App aprobada con feedback muy positivo de mamás durante testing. La organización por etapas fue validada como diferenciador principal.",
-      "learning": "En productos para mamás, la empatía es el fundamento del diseño. Cada decisión de UX debe pasar por el filtro: '¿esto le simplifica la vida?'"
+      "results_en": "App approved with very positive feedback from mothers during testing. Stage-based organization was validated as the main differentiator.",
+      "learning": "En productos para mamás, la empatía es el fundamento del diseño. Cada decisión de UX debe pasar por el filtro: '¿esto le simplifica la vida?'",
+      "learning_en": "In products for mothers, empathy is the foundation of design. Every UX decision must pass the filter: 'does this simplify her life?'"
     },
     {
       "id": "kiut",
@@ -334,7 +432,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/65ac26121614977.Y3JvcCwxOTIwLDE1MDEsMCwxOQ.jpg",
       "url": "https://www.behance.net/gallery/121614977/UXUI-Web-Kiut-Norma",
       "hook": "Plataforma e-commerce diseñada para conectar con público juvenil a través de una experiencia de compra vibrante.",
+      "hook_en": "E-commerce platform designed to connect with youth audiences through a vibrant shopping experience.",
       "impact": "E-commerce · UX/UI · Público juvenil",
+      "impact_en": "E-commerce · UX/UI · Youth audience",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Norma (Kiut)",
       "tools": [
@@ -343,23 +443,33 @@
         "Illustrator"
       ],
       "context": "Kiut, la línea juvenil de Norma, necesitaba un e-commerce atractivo para jóvenes estudiantes sin sacrificar la usabilidad del flujo de compra.",
+      "context_en": "Kiut, Norma's youth line, needed an attractive e-commerce for young students without sacrificing the usability of the purchase flow.",
       "audience": "Estudiantes jóvenes (13-22 años), nativos digitales, consumidores de papelería y accesorios escolares.",
+      "audience_en": "Young students (13-22 years), digital natives, consumers of stationery and school accessories.",
       "roleDetail": "Lideré el diseño UX/UI desde la investigación del público objetivo hasta el diseño visual de alta fidelidad. Alineé la experiencia digital con las campañas de marca.",
+      "roleDetail_en": "I led UX/UI design from target audience research to high-fidelity visual design. I aligned the digital experience with brand campaigns.",
       "process": [
         {
           "id": "pr1",
           "title": "Research juvenil",
-          "desc": "Analicé referentes de e-commerce exitosos entre público joven e identifiqué patrones clave: navegación visual (no textual), reviews sociales, y checkout simplificado."
+          "title_en": "Youth research",
+          "desc": "Analicé referentes de e-commerce exitosos entre público joven e identifiqué patrones clave: navegación visual (no textual), reviews sociales, y checkout simplificado.",
+          "desc_en": "I analyzed successful e-commerce references among young audiences and identified key patterns: visual navigation (not text-based), social reviews, and simplified checkout."
         },
         {
           "id": "pr2",
           "title": "Journey de compra simplificado",
-          "desc": "Flujo de compra en 3 pasos reduciendo fricción al mínimo. Navegación por categorías visuales e integración de contenido aspiracional dentro del catálogo."
+          "title_en": "Simplified purchase journey",
+          "desc": "Flujo de compra en 3 pasos reduciendo fricción al mínimo. Navegación por categorías visuales e integración de contenido aspiracional dentro del catálogo.",
+          "desc_en": "3-step purchase flow reducing friction to a minimum. Visual category navigation and integration of aspirational content within the catalog."
         }
       ],
       "solution": "Plataforma e-commerce con navegación visual, flujo de compra simplificado, contenido de marca integrado y diseño responsive.",
+      "solution_en": "E-commerce platform with visual navigation, simplified purchase flow, integrated brand content and responsive design.",
       "results": "La plataforma alineó la experiencia digital con el posicionamiento juvenil de Kiut. Validada por el cliente como referencia para extensiones de marca.",
-      "learning": "Diseñar para público joven requiere equilibrar tendencias visuales con usabilidad. Lo 'cool' no puede sacrificar lo funcional."
+      "results_en": "The platform aligned the digital experience with Kiut's youth positioning. Validated by the client as a reference for brand extensions.",
+      "learning": "Diseñar para público joven requiere equilibrar tendencias visuales con usabilidad. Lo 'cool' no puede sacrificar lo funcional.",
+      "learning_en": "Designing for young audiences requires balancing visual trends with usability. The 'cool' factor cannot sacrifice functionality."
     },
     {
       "id": "coexito",
@@ -370,7 +480,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/450979121610859.Y3JvcCwxOTIwLDE1MDEsMCwxODU.jpg",
       "url": "https://www.behance.net/gallery/121610859/UXUI-Aplicacion-Web-Coxito-Evolution-Futbol-Club",
       "hook": "Plataforma de fidelización gamificada con temática de fútbol que transformó el engagement de clientes B2B.",
+      "hook_en": "Football-themed gamified loyalty platform that transformed B2B customer engagement.",
       "impact": "Gamificación · Fidelización · Web App",
+      "impact_en": "Gamification · Loyalty · Web App",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Coéxito",
       "tools": [
@@ -379,23 +491,33 @@
         "Illustrator"
       ],
       "context": "Coéxito buscaba aumentar la fidelización de clientes B2B (talleres mecánicos) con una plataforma gamificada de temática futbolera que incentivara compras recurrentes.",
+      "context_en": "Coéxito sought to increase B2B customer loyalty (mechanics workshops) with a football-themed gamified platform that incentivized recurring purchases.",
       "audience": "Dueños y empleados de talleres mecánicos (30-55 años), apasionados por el fútbol.",
+      "audience_en": "Owners and employees of mechanics workshops (30-55 years), passionate about football.",
       "roleDetail": "Diseñé la experiencia completa de la plataforma web, alineando mecánicas de gamificación con objetivos de negocio.",
+      "roleDetail_en": "I designed the complete web platform experience, aligning gamification mechanics with business objectives.",
       "process": [
         {
           "id": "pr1",
           "title": "Gamificación con propósito",
-          "desc": "Mapeé mecánicas de gamificación (puntos, ligas, logros) alineándolas con comportamientos de compra deseados. Cada acción tenía un objetivo de negocio claro."
+          "title_en": "Gamification with purpose",
+          "desc": "Mapeé mecánicas de gamificación (puntos, ligas, logros) alineándolas con comportamientos de compra deseados. Cada acción tenía un objetivo de negocio claro.",
+          "desc_en": "I mapped gamification mechanics (points, leagues, achievements) aligning them with desired purchasing behaviors. Each action had a clear business objective."
         },
         {
           "id": "pr2",
           "title": "Mecánicas de juego",
-          "desc": "Dashboard de progreso como equipo de fútbol subiendo de liga, haciendo tangible la recompensa y balanceando simplicidad con engagement."
+          "title_en": "Game mechanics",
+          "desc": "Dashboard de progreso como equipo de fútbol subiendo de liga, haciendo tangible la recompensa y balanceando simplicidad con engagement.",
+          "desc_en": "Progress dashboard as a football team moving up the league, making the reward tangible and balancing simplicity with engagement."
         }
       ],
       "solution": "Web app gamificada con dashboard de progreso, sistema de ligas, catálogo de premios y mecánicas de competencia entre talleres.",
+      "solution_en": "Gamified web app with progress dashboard, league system, rewards catalog and competition mechanics between workshops.",
       "results": "Plataforma lanzada con recepción positiva. Las mecánicas incentivaron la interacción recurrente con la marca.",
-      "learning": "La gamificación funciona cuando las mecánicas refuerzan comportamientos reales de negocio. Si la diversión no está alineada con el objetivo, es distracción."
+      "results_en": "Platform launched with positive reception. The mechanics encouraged recurring interaction with the brand.",
+      "learning": "La gamificación funciona cuando las mecánicas refuerzan comportamientos reales de negocio. Si la diversión no está alineada con el objetivo, es distracción.",
+      "learning_en": "Gamification works when mechanics reinforce real business behaviors. If the fun isn't aligned with the objective, it's a distraction."
     },
     {
       "id": "coomeva",
@@ -406,7 +528,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/5cd6ed123929151.Y3JvcCwxOTIwLDE1MDEsMCwyMDk.jpg",
       "url": "https://www.behance.net/gallery/123929151/Coomeva",
       "hook": "Rediseño web institucional que reorganizó un ecosistema complejo de servicios en una experiencia clara.",
+      "hook_en": "Institutional web redesign that reorganized a complex service ecosystem into a clear experience.",
       "impact": "Rediseño Web · Arquitectura UX · Responsive",
+      "impact_en": "Web Redesign · UX Architecture · Responsive",
       "role": "Web Designer Sr.",
       "company": "Existaya.com → Coomeva",
       "tools": [
@@ -414,23 +538,33 @@
         "Photoshop"
       ],
       "context": "Coomeva, una de las cooperativas más grandes de Colombia, tenía problemas de navegación: los usuarios no encontraban los servicios que buscaban y la tasa de rebote era alta.",
+      "context_en": "Coomeva, one of Colombia's largest cooperatives, had navigation problems: users couldn't find the services they were looking for and the bounce rate was high.",
       "audience": "Afiliados actuales y potenciales buscando información sobre salud, educación, recreación y servicios financieros.",
+      "audience_en": "Current and potential members seeking information about health, education, recreation and financial services.",
       "roleDetail": "Lideré el rediseño visual y la arquitectura de información. Trabajé con el equipo de contenidos del cliente y el equipo de desarrollo de la agencia.",
+      "roleDetail_en": "I led the visual redesign and information architecture. I worked with the client's content team and the agency's development team.",
       "process": [
         {
           "id": "pr1",
           "title": "Auditoría de experiencia",
-          "desc": "Análisis heurístico identificando problemas críticos: menús sobrecargados, jerarquía visual confusa y falta de rutas claras hacia los servicios principales."
+          "title_en": "Experience audit",
+          "desc": "Análisis heurístico identificando problemas críticos: menús sobrecargados, jerarquía visual confusa y falta de rutas claras hacia los servicios principales.",
+          "desc_en": "Heuristic analysis identifying critical issues: overloaded menus, confusing visual hierarchy and lack of clear paths to main services."
         },
         {
           "id": "pr2",
           "title": "Nueva arquitectura de información",
-          "desc": "Reorganicé basándome en las tareas más frecuentes de los usuarios, simplificando la navegación y creando rutas directas a los 5 servicios más buscados."
+          "title_en": "New information architecture",
+          "desc": "Reorganicé basándome en las tareas más frecuentes de los usuarios, simplificando la navegación y creando rutas directas a los 5 servicios más buscados.",
+          "desc_en": "I reorganized based on users' most frequent tasks, simplifying navigation and creating direct routes to the 5 most searched services."
         }
       ],
       "solution": "Sitio web rediseñado con arquitectura simplificada, navegación intuitiva basada en tareas del usuario y sistema visual modular responsive.",
+      "solution_en": "Redesigned website with simplified architecture, task-based intuitive navigation and responsive modular visual system.",
       "results": "El rediseño mejoró la organización del contenido. El cliente reportó feedback positivo de afiliados sobre la facilidad para encontrar información.",
-      "learning": "En sitios institucionales complejos, la arquitectura de información es el 80% del trabajo. Un buen diseño visual no compensa una estructura confusa."
+      "results_en": "The redesign improved content organization. The client reported positive feedback from members about ease of finding information.",
+      "learning": "En sitios institucionales complejos, la arquitectura de información es el 80% del trabajo. Un buen diseño visual no compensa una estructura confusa.",
+      "learning_en": "In complex institutional sites, information architecture is 80% of the work. Good visual design doesn't compensate for a confusing structure."
     },
     {
       "id": "finesa",
@@ -441,7 +575,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/f09906121454713.Y3JvcCwxMjc1LDk5NywwLDA.png",
       "url": "https://www.behance.net/gallery/121454713/UXUI-Web-Finesa-Seguros",
       "hook": "Web de seguros que simplifica un producto complejo: comunicación clara, confianza y conversión.",
+      "hook_en": "Insurance website that simplifies a complex product: clear communication, trust and conversion.",
       "impact": "Seguros · UX/UI · Conversión web",
+      "impact_en": "Insurance · UX/UI · Web conversion",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Finesa Seguros",
       "tools": [
@@ -449,23 +585,33 @@
         "Photoshop"
       ],
       "context": "Los seguros son inherentemente complejos y los usuarios abandonan cuando no entienden qué están comprando. Finesa necesitaba comunicar sus productos de forma clara y accesible.",
+      "context_en": "Insurance is inherently complex and users abandon when they don't understand what they're buying. Finesa needed to communicate its products in a clear and accessible way.",
       "audience": "Personas y empresas buscando seguros de vida, auto, hogar y SOAT en Colombia.",
+      "audience_en": "Individuals and companies seeking life, auto, home and SOAT insurance in Colombia.",
       "roleDetail": "Diseñé la experiencia web completa con foco en simplificar la comunicación de productos de seguros y optimizar el flujo de cotización.",
+      "roleDetail_en": "I designed the complete web experience with a focus on simplifying insurance product communication and optimizing the quote flow.",
       "process": [
         {
           "id": "pr1",
           "title": "Simplificación del producto",
-          "desc": "En vez de listar features técnicas, organicé la información alrededor de escenarios de vida ('¿Qué pasa si...?') haciendo tangible el valor de cada producto."
+          "title_en": "Product simplification",
+          "desc": "En vez de listar features técnicas, organicé la información alrededor de escenarios de vida ('¿Qué pasa si...?') haciendo tangible el valor de cada producto.",
+          "desc_en": "Instead of listing technical features, I organized information around life scenarios ('What happens if...?') making the value of each product tangible."
         },
         {
           "id": "pr2",
           "title": "Flujo de cotización",
-          "desc": "Cotización simplificada en pasos visuales con feedback progresivo, mostrando el precio estimado lo antes posible para reducir la ansiedad de compra."
+          "title_en": "Quote flow",
+          "desc": "Cotización simplificada en pasos visuales con feedback progresivo, mostrando el precio estimado lo antes posible para reducir la ansiedad de compra.",
+          "desc_en": "Simplified quote in visual steps with progressive feedback, showing the estimated price as early as possible to reduce purchase anxiety."
         }
       ],
       "solution": "Sitio web con comunicación basada en escenarios de vida, cotizador simplificado y diseño visual profesional.",
+      "solution_en": "Website with life scenario-based communication, simplified quoter and professional visual design.",
       "results": "Proyecto más visto de mi portafolio en Behance (168+ views), validando que la simplificación de productos complejos resuena con la comunidad de diseño.",
-      "learning": "Los productos complejos se venden con claridad, no con más información. Menos jargon, más escenarios reales."
+      "results_en": "Most viewed project in my Behance portfolio (168+ views), validating that simplifying complex products resonates with the design community.",
+      "learning": "Los productos complejos se venden con claridad, no con más información. Menos jargon, más escenarios reales.",
+      "learning_en": "Complex products sell with clarity, not more information. Less jargon, more real-life scenarios."
     },
     {
       "id": "educacion",
@@ -476,7 +622,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/4bfe43123861105.Y3JvcCwxMDIzLDgwMCwwLDA.png",
       "url": "https://www.behance.net/gallery/123861105/Educacion-Primero",
       "hook": "Plataforma educativa diseñada con enfoque en accesibilidad para democratizar el acceso al aprendizaje.",
+      "hook_en": "Educational platform designed with an accessibility focus to democratize access to learning.",
       "impact": "EdTech · Accesibilidad · UX/UI",
+      "impact_en": "EdTech · Accessibility · UX/UI",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Educación Primero",
       "tools": [
@@ -484,23 +632,33 @@
         "Miro"
       ],
       "context": "Plataforma digital que facilitara el acceso a contenido educativo para audiencias diversas, incluyendo personas con diferentes niveles de alfabetización digital.",
+      "context_en": "A digital platform to facilitate access to educational content for diverse audiences, including people with different levels of digital literacy.",
       "audience": "Estudiantes, educadores y comunidades con acceso limitado a recursos educativos de calidad.",
+      "audience_en": "Students, educators and communities with limited access to quality educational resources.",
       "roleDetail": "Lideré el diseño UX/UI con foco en accesibilidad y facilidad de uso. Definí la arquitectura de información y los estándares de diseño accesible.",
+      "roleDetail_en": "I led UX/UI design with a focus on accessibility and ease of use. I defined the information architecture and accessible design standards.",
       "process": [
         {
           "id": "pr1",
           "title": "Accesibilidad como criterio central",
-          "desc": "Apliqué lineamientos WCAG desde wireframing: contraste adecuado, tipografía legible, navegación por teclado y estructura semántica clara."
+          "title_en": "Accessibility as central criterion",
+          "desc": "Apliqué lineamientos WCAG desde wireframing: contraste adecuado, tipografía legible, navegación por teclado y estructura semántica clara.",
+          "desc_en": "I applied WCAG guidelines from wireframing: adequate contrast, legible typography, keyboard navigation and clear semantic structure."
         },
         {
           "id": "pr2",
           "title": "Diseño instruccional",
-          "desc": "Contenido organizado con progresión clara, módulos manejables y feedback constante del avance para minimizar la carga cognitiva."
+          "title_en": "Instructional design",
+          "desc": "Contenido organizado con progresión clara, módulos manejables y feedback constante del avance para minimizar la carga cognitiva.",
+          "desc_en": "Content organized with clear progression, manageable modules and constant progress feedback to minimize cognitive load."
         }
       ],
       "solution": "Plataforma educativa accesible (WCAG) con arquitectura basada en progresión de aprendizaje, interfaz limpia y navegación simplificada.",
+      "solution_en": "Accessible educational platform (WCAG) with architecture based on learning progression, clean interface and simplified navigation.",
       "results": "Cumplió estándares de accesibilidad requeridos. Validación positiva de stakeholders educativos. Caso de referencia en diseño accesible dentro de la agencia.",
-      "learning": "Diseñar para accesibilidad mejora la experiencia para todos. Las restricciones de accesibilidad son guías para mejor diseño."
+      "results_en": "Met required accessibility standards. Positive validation from educational stakeholders. Reference case for accessible design within the agency.",
+      "learning": "Diseñar para accesibilidad mejora la experiencia para todos. Las restricciones de accesibilidad son guías para mejor diseño.",
+      "learning_en": "Designing for accessibility improves the experience for everyone. Accessibility constraints are guides to better design."
     },
     {
       "id": "campestre",
@@ -511,7 +669,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/0c324f123926721.Y3JvcCwxOTIwLDE1MDEsMCww.jpg",
       "url": "https://www.behance.net/gallery/123926721/Club-Campestre-Cali",
       "hook": "Diseño web premium que traduce la elegancia del Club Campestre en una experiencia digital sofisticada.",
+      "hook_en": "Premium web design that translates the elegance of Club Campestre into a sophisticated digital experience.",
       "impact": "Web Design · Branding · UI Premium",
+      "impact_en": "Web Design · Branding · Premium UI",
       "role": "Web Designer Sr.",
       "company": "Existaya.com → Club Campestre",
       "tools": [
@@ -519,23 +679,33 @@
         "Illustrator"
       ],
       "context": "El Club Campestre de Cali necesitaba un sitio web que reflejara su posicionamiento premium. La web anterior no transmitía la experiencia exclusiva que los socios vivían presencialmente.",
+      "context_en": "Club Campestre de Cali needed a website that reflected its premium positioning. The previous website didn't convey the exclusive experience members lived in person.",
       "audience": "Socios actuales y prospectos de alto perfil socioeconómico en Cali y Valle del Cauca.",
+      "audience_en": "Current and prospective high socioeconomic profile members in Cali and Valle del Cauca.",
       "roleDetail": "Diseñé la interfaz completa definiendo la dirección visual premium y coordinando la selección fotográfica con el equipo de contenidos.",
+      "roleDetail_en": "I designed the complete interface, defining the premium visual direction and coordinating photo selection with the content team.",
       "process": [
         {
           "id": "pr1",
           "title": "Inmersión en la marca",
-          "desc": "Visité las instalaciones y entrevisté al equipo directivo para capturar la esencia: tradición, elegancia y comunidad. El diseño debía ser sofisticado sin ser ostentoso."
+          "title_en": "Brand immersion",
+          "desc": "Visité las instalaciones y entrevisté al equipo directivo para capturar la esencia: tradición, elegancia y comunidad. El diseño debía ser sofisticado sin ser ostentoso.",
+          "desc_en": "I visited the facilities and interviewed the management team to capture the essence: tradition, elegance and community. The design had to be sophisticated without being ostentatious."
         },
         {
           "id": "pr2",
           "title": "Dirección visual editorial",
-          "desc": "Enfoque editorial con fotografía de gran formato, tipografía serif elegante y espacios generosos. Cada sección refleja una faceta del club."
+          "title_en": "Editorial visual direction",
+          "desc": "Enfoque editorial con fotografía de gran formato, tipografía serif elegante y espacios generosos. Cada sección refleja una faceta del club.",
+          "desc_en": "Editorial approach with large-format photography, elegant serif typography and generous spacing. Each section reflects a facet of the club."
         }
       ],
       "solution": "Sitio web editorial premium con fotografía protagonista, navegación limpia y responsive design que mantiene la sofisticación en todos los dispositivos.",
+      "solution_en": "Premium editorial website with hero photography, clean navigation and responsive design that maintains sophistication across all devices.",
       "results": "Bien recibido por la directiva y los socios. Sirvió como referencia para otros proyectos de la agencia en el segmento lifestyle.",
-      "learning": "En diseño premium, menos es más. La sofisticación viene de la contención y la calidad de los detalles."
+      "results_en": "Well received by management and members. Served as a reference for other agency projects in the lifestyle segment.",
+      "learning": "En diseño premium, menos es más. La sofisticación viene de la contención y la calidad de los detalles.",
+      "learning_en": "In premium design, less is more. Sophistication comes from restraint and quality of details."
     },
     {
       "id": "yupi",
@@ -546,7 +716,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/5a9da0123866637.Y3JvcCwxOTIwLDE1MDEsMCww.jpg",
       "url": "https://www.behance.net/gallery/123866637/Yupi",
       "hook": "Experiencia digital vibrante que traduce la energía de Yupi en una plataforma web interactiva y memorable.",
+      "hook_en": "Vibrant digital experience that translates Yupi's energy into an interactive and memorable web platform.",
       "impact": "Web Design · Branding · Consumo masivo",
+      "impact_en": "Web Design · Branding · Mass consumer",
       "role": "Web Designer Sr.",
       "company": "Existaya.com → Yupi",
       "tools": [
@@ -554,18 +726,26 @@
         "Illustrator"
       ],
       "context": "Yupi necesitaba una presencia digital que reflejara la diversión y energía de su marca icónica de snacks, conectando con público joven.",
+      "context_en": "Yupi needed a digital presence that reflected the fun and energy of its iconic snack brand, connecting with young audiences.",
       "audience": "Consumidores jóvenes de snacks, niños y adolescentes.",
+      "audience_en": "Young snack consumers, children and teenagers.",
       "roleDetail": "Diseñé la experiencia visual completa del sitio web, traduciendo la personalidad divertida de la marca al medio digital.",
+      "roleDetail_en": "I designed the complete visual experience of the website, translating the brand's fun personality to the digital medium.",
       "process": [
         {
           "id": "pr1",
           "title": "Traducción de marca",
-          "desc": "Estudié la identidad de Yupi — colores vibrantes, personajes, tono irreverente — para definir cómo traducir esa energía al digital sin caer en lo caótico."
+          "title_en": "Brand translation",
+          "desc": "Estudié la identidad de Yupi — colores vibrantes, personajes, tono irreverente — para definir cómo traducir esa energía al digital sin caer en lo caótico.",
+          "desc_en": "I studied Yupi's identity — vibrant colors, characters, irreverent tone — to define how to translate that energy to digital without becoming chaotic."
         }
       ],
       "solution": "Sitio web vibrante con elementos interactivos, animaciones, diseño responsive y secciones dinámicas para productos y campañas.",
+      "solution_en": "Vibrant website with interactive elements, animations, responsive design and dynamic sections for products and campaigns.",
       "results": "Lanzado como parte de la estrategia digital de Yupi, con aprobación del cliente por su alineación con la marca.",
-      "learning": "En marcas de consumo masivo, la diversión visual debe sumar, no distraer del contenido."
+      "results_en": "Launched as part of Yupi's digital strategy, with client approval for its brand alignment.",
+      "learning": "En marcas de consumo masivo, la diversión visual debe sumar, no distraer del contenido.",
+      "learning_en": "In mass consumer brands, visual fun must add value, not distract from content."
     },
     {
       "id": "lina-triana",
@@ -576,7 +756,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/e2de41121542735.Y3JvcCwxOTIwLDE1MDEsMCww.jpg",
       "url": "https://www.behance.net/gallery/121542735/UXUI-Web-Dr-Lina-Triana",
       "hook": "Web para una cirujana plástica reconocida: profesionalismo, confianza y elegancia en cada detalle.",
+      "hook_en": "Website for a renowned plastic surgeon: professionalism, trust and elegance in every detail.",
       "impact": "Web · Salud · Branding profesional",
+      "impact_en": "Web · Health · Professional branding",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Dra. Lina Triana",
       "tools": [
@@ -584,23 +766,33 @@
         "Photoshop"
       ],
       "context": "La Dra. Lina Triana necesitaba un sitio web que transmitiera confianza profesional y sofisticación. En el sector salud, la web es el primer punto de contacto con pacientes potenciales.",
+      "context_en": "Dr. Lina Triana needed a website that conveyed professional trust and sophistication. In the healthcare sector, the website is the first point of contact with potential patients.",
       "audience": "Pacientes potenciales de cirugía plástica, mujeres (30-55 años) de nivel socioeconómico alto.",
+      "audience_en": "Potential plastic surgery patients, women (30-55 years) of high socioeconomic status.",
       "roleDetail": "Diseñé la interfaz web completa, definiendo la estrategia visual para transmitir profesionalismo médico con elegancia.",
+      "roleDetail_en": "I designed the complete web interface, defining the visual strategy to convey medical professionalism with elegance.",
       "process": [
         {
           "id": "pr1",
           "title": "Confianza como principio",
-          "desc": "Cada elemento visual comunica confianza o la erosiona. Prioricé fotografía profesional, testimoniales verificables, credenciales visibles y diseño limpio."
+          "title_en": "Trust as a principle",
+          "desc": "Cada elemento visual comunica confianza o la erosiona. Prioricé fotografía profesional, testimoniales verificables, credenciales visibles y diseño limpio.",
+          "desc_en": "Every visual element communicates trust or erodes it. I prioritized professional photography, verifiable testimonials, visible credentials and clean design."
         },
         {
           "id": "pr2",
           "title": "Navegación orientada al paciente",
-          "desc": "Organicé el sitio alrededor de las preguntas más frecuentes: procedimientos, resultados, proceso de consulta y financiación."
+          "title_en": "Patient-oriented navigation",
+          "desc": "Organicé el sitio alrededor de las preguntas más frecuentes: procedimientos, resultados, proceso de consulta y financiación.",
+          "desc_en": "I organized the site around the most frequently asked questions: procedures, results, consultation process and financing."
         }
       ],
       "solution": "Sitio web profesional con foco en credibilidad, galería de resultados, agendamiento y diseño visual elegante.",
+      "solution_en": "Professional website focused on credibility, results gallery, scheduling and elegant visual design.",
       "results": "Fortaleció la presencia digital y mejoró la captación de pacientes a través del canal web.",
-      "learning": "En diseño para salud, la confianza se construye con consistencia visual, credenciales visibles y tono empático."
+      "results_en": "Strengthened digital presence and improved patient acquisition through the web channel.",
+      "learning": "En diseño para salud, la confianza se construye con consistencia visual, credenciales visibles y tono empático.",
+      "learning_en": "In health design, trust is built with visual consistency, visible credentials and empathetic tone."
     },
     {
       "id": "keepay-landing",
@@ -611,7 +803,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/cff2ad121542399.Y3JvcCwxOTIwLDE1MDEsMCww.jpg",
       "url": "https://www.behance.net/gallery/121542399/UXUI-Landing-Page-Keepay",
       "hook": "Landing page de conversión para Keepay: comunicar valor y generar descargas con diseño limpio y persuasivo.",
+      "hook_en": "Conversion landing page for Keepay: communicate value and generate downloads with clean and persuasive design.",
       "impact": "Landing Page · Conversión · Fintech",
+      "impact_en": "Landing Page · Conversion · Fintech",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Keepay",
       "tools": [
@@ -619,18 +813,26 @@
         "Photoshop"
       ],
       "context": "Landing page que comunicara la propuesta de valor de Keepay y convirtiera visitantes en descargas. El reto: explicar un producto financiero complejo en segundos.",
+      "context_en": "A landing page to communicate Keepay's value proposition and convert visitors into downloads. The challenge: explain a complex financial product in seconds.",
       "audience": "Usuarios potenciales llegando desde campañas de marketing digital.",
+      "audience_en": "Potential users arriving from digital marketing campaigns.",
       "roleDetail": "Diseñé la landing page completa con foco en conversión: estructura de contenido, copywriting visual y CTAs estratégicos.",
+      "roleDetail_en": "I designed the complete landing page with a focus on conversion: content structure, visual copywriting and strategic CTAs.",
       "process": [
         {
           "id": "pr1",
           "title": "Estructura de conversión",
-          "desc": "Principios de diseño de conversión: hero con propuesta de valor clara, beneficios con iconografía, social proof, y CTA repetido estratégicamente."
+          "title_en": "Conversion structure",
+          "desc": "Principios de diseño de conversión: hero con propuesta de valor clara, beneficios con iconografía, social proof, y CTA repetido estratégicamente.",
+          "desc_en": "Conversion design principles: hero with clear value proposition, benefits with iconography, social proof, and CTA repeated strategically."
         }
       ],
       "solution": "Landing page con hero de alto impacto, secciones de beneficios, testimoniales y CTAs optimizados para conversión.",
+      "solution_en": "Landing page with high-impact hero, benefits sections, testimonials and CTAs optimized for conversion.",
       "results": "Lanzada como parte de la estrategia de adquisición de Keepay.",
-      "learning": "En landing pages fintech, la claridad del mensaje vale más que la sofisticación visual."
+      "results_en": "Launched as part of Keepay's acquisition strategy.",
+      "learning": "En landing pages fintech, la claridad del mensaje vale más que la sofisticación visual.",
+      "learning_en": "In fintech landing pages, message clarity is worth more than visual sophistication."
     },
     {
       "id": "winny-cal-19",
@@ -641,7 +843,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/bee17f121543057.Y3JvcCwxOTIwLDE1MDEsMCwzMDg.jpg",
       "url": "https://www.behance.net/gallery/121543057/UXUI-Web-Calendario-Winny-2019",
       "hook": "Herramienta web de seguimiento del embarazo: contenido personalizado semana a semana para futuras mamás.",
+      "hook_en": "Pregnancy tracking web tool: week-by-week personalized content for expectant mothers.",
       "impact": "Web App · Contenido personalizado · Maternidad",
+      "impact_en": "Web App · Personalized content · Maternity",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Winny",
       "tools": [
@@ -649,18 +853,26 @@
         "Photoshop"
       ],
       "context": "Winny quería acompañar a las futuras mamás desde el embarazo con contenido personalizado semana a semana, siendo una guía confiable.",
+      "context_en": "Winny wanted to accompany expectant mothers from pregnancy with week-by-week personalized content, being a reliable guide.",
       "audience": "Mujeres embarazadas buscando información confiable sobre el desarrollo de su bebé.",
+      "audience_en": "Pregnant women seeking reliable information about their baby's development.",
       "roleDetail": "Diseñé la experiencia web y la interfaz visual, organizando contenido de embarazo de forma progresiva.",
+      "roleDetail_en": "I designed the web experience and visual interface, organizing pregnancy content progressively.",
       "process": [
         {
           "id": "pr1",
           "title": "Contenido progresivo",
-          "desc": "Sistema que se desbloquea semana a semana, dando solo información relevante para cada etapa. Esto redujo la ansiedad de información y creó hábito de visita semanal."
+          "title_en": "Progressive content",
+          "desc": "Sistema que se desbloquea semana a semana, dando solo información relevante para cada etapa. Esto redujo la ansiedad de información y creó hábito de visita semanal.",
+          "desc_en": "System that unlocks week by week, giving only relevant information for each stage. This reduced information anxiety and created a habit of weekly visits."
         }
       ],
       "solution": "Web app con calendario interactivo de embarazo, contenido semanal personalizado y seguimiento visual del desarrollo del bebé.",
+      "solution_en": "Web app with interactive pregnancy calendar, personalized weekly content and visual tracking of baby development.",
       "results": "Integrada a la estrategia de fidelización de Winny, fortaleciendo la relación con futuras mamás.",
-      "learning": "El contenido personalizado por etapa crea hábito y relevancia. Mostrar todo de una vez genera ansiedad."
+      "results_en": "Integrated into Winny's loyalty strategy, strengthening the relationship with expectant mothers.",
+      "learning": "El contenido personalizado por etapa crea hábito y relevancia. Mostrar todo de una vez genera ansiedad.",
+      "learning_en": "Stage-by-stage personalized content creates habit and relevance. Showing everything at once generates anxiety."
     },
     {
       "id": "fondecom",
@@ -671,7 +883,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/888536121542171.Y3JvcCwxOTIwLDE1MDEsMCww.jpg",
       "url": "https://www.behance.net/gallery/121542171/UXUI-Web-Fondecom",
       "hook": "Rediseño web para un fondo de empleados: claridad y confianza en servicios financieros.",
+      "hook_en": "Web redesign for an employee fund: clarity and trust in financial services.",
       "impact": "Web · Servicios financieros · UX",
+      "impact_en": "Web · Financial services · UX",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Fondecom",
       "tools": [
@@ -679,18 +893,26 @@
         "Illustrator"
       ],
       "context": "Fondecom tenía una web confusa donde los asociados recurrían a atención presencial para trámites que podían ser digitales.",
+      "context_en": "Fondecom had a confusing website where members resorted to in-person service for procedures that could be digital.",
       "audience": "Empleados asociados buscando información sobre créditos, ahorros y beneficios.",
+      "audience_en": "Employee members seeking information about loans, savings and benefits.",
       "roleDetail": "Diseñé el rediseño con foco en claridad de información financiera y autogestión.",
+      "roleDetail_en": "I designed the redesign with a focus on clarity of financial information and self-management.",
       "process": [
         {
           "id": "pr1",
           "title": "Simplificación de servicios",
-          "desc": "Reorganicé servicios en categorías intuitivas (Ahorro, Crédito, Beneficios) con simuladores que dan autonomía al usuario."
+          "title_en": "Service simplification",
+          "desc": "Reorganicé servicios en categorías intuitivas (Ahorro, Crédito, Beneficios) con simuladores que dan autonomía al usuario.",
+          "desc_en": "I reorganized services into intuitive categories (Savings, Credit, Benefits) with simulators that give users autonomy."
         }
       ],
       "solution": "Sitio web con arquitectura clara de servicios, herramientas de simulación y diseño que transmite confianza.",
+      "solution_en": "Website with clear service architecture, simulation tools and design that conveys trust.",
       "results": "Mejoró la autogestión de asociados y redujo consultas presenciales.",
-      "learning": "Los servicios financieros deben comunicarse en lenguaje humano. La jerga es la principal barrera de uso."
+      "results_en": "Improved member self-management and reduced in-person inquiries.",
+      "learning": "Los servicios financieros deben comunicarse en lenguaje humano. La jerga es la principal barrera de uso.",
+      "learning_en": "Financial services must communicate in human language. Jargon is the main barrier to use."
     },
     {
       "id": "bas",
@@ -701,7 +923,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/fde6dd121515979.Y3JvcCwxOTIwLDE1MDEsMCwyMjg.jpg",
       "url": "https://www.behance.net/gallery/121515979/UXUI-Web-Bas-de-Colombia",
       "hook": "Web corporativa industrial: comunicando innovación técnica con diseño profesional.",
+      "hook_en": "Industrial corporate website: communicating technical innovation with professional design.",
       "impact": "Web · Industrial · B2B",
+      "impact_en": "Web · Industrial · B2B",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Bas de Colombia",
       "tools": [
@@ -709,18 +933,26 @@
         "Illustrator"
       ],
       "context": "Bas de Colombia necesitaba profesionalizar su presencia digital para competir en el mercado B2B industrial.",
+      "context_en": "Bas de Colombia needed to professionalize its digital presence to compete in the industrial B2B market.",
       "audience": "Clientes B2B del sector industrial, compradores técnicos y tomadores de decisión.",
+      "audience_en": "B2B clients from the industrial sector, technical buyers and decision makers.",
       "roleDetail": "Diseñé la interfaz web corporativa con foco en comunicar profesionalismo y capacidad técnica.",
+      "roleDetail_en": "I designed the corporate web interface with a focus on communicating professionalism and technical capability.",
       "process": [
         {
           "id": "pr1",
           "title": "Diseño B2B industrial",
-          "desc": "Enfoque visual limpio y técnico, priorizando información de productos, capacidades de manufactura y certificaciones. En B2B industrial, la credibilidad técnica es el driver de conversión."
+          "title_en": "Industrial B2B design",
+          "desc": "Enfoque visual limpio y técnico, priorizando información de productos, capacidades de manufactura y certificaciones. En B2B industrial, la credibilidad técnica es el driver de conversión.",
+          "desc_en": "Clean and technical visual approach, prioritizing product information, manufacturing capabilities and certifications. In industrial B2B, technical credibility is the conversion driver."
         }
       ],
       "solution": "Sitio web con catálogo de productos, información técnica accesible y secciones de certificaciones.",
+      "solution_en": "Website with product catalog, accessible technical information and certifications sections.",
       "results": "Profesionalizó la presencia digital, mejorando la percepción de marca en el sector industrial.",
-      "learning": "El diseño B2B industrial debe priorizar la información técnica. Los compradores buscan datos, no decoración."
+      "results_en": "Professionalized the digital presence, improving brand perception in the industrial sector.",
+      "learning": "El diseño B2B industrial debe priorizar la información técnica. Los compradores buscan datos, no decoración.",
+      "learning_en": "Industrial B2B design must prioritize technical information. Buyers want data, not decoration."
     },
     {
       "id": "grupo-elite",
@@ -731,7 +963,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/9e8c63121542247.Y3JvcCwxNzg1LDEzOTYsNjYsMzA.jpg",
       "url": "https://www.behance.net/gallery/121542247/UXUI-Web-Grupo-Elite",
       "hook": "Web corporativa que comunica solidez y trayectoria para un grupo empresarial diversificado.",
+      "hook_en": "Corporate website that communicates solidity and track record for a diversified business group.",
       "impact": "Web Corporativa · UI Design · Branding",
+      "impact_en": "Corporate Web · UI Design · Branding",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Grupo Elite",
       "tools": [
@@ -739,18 +973,26 @@
         "Illustrator"
       ],
       "context": "Grupo Elite necesitaba unificar múltiples unidades de negocio bajo una experiencia digital coherente que comunicara solidez.",
+      "context_en": "Grupo Elite needed to unify multiple business units under a coherent digital experience that communicated solidity.",
       "audience": "Clientes B2B, inversionistas y talento profesional.",
+      "audience_en": "B2B clients, investors and professional talent.",
       "roleDetail": "Diseñé la interfaz web unificando la identidad visual de las diferentes unidades de negocio.",
+      "roleDetail_en": "I designed the web interface unifying the visual identity of the different business units.",
       "process": [
         {
           "id": "pr1",
           "title": "Unificación visual",
-          "desc": "Sistema visual que permite a cada unidad mantener su personalidad dentro de un marco corporativo coherente. Paleta base compartida con acentos por división."
+          "title_en": "Visual unification",
+          "desc": "Sistema visual que permite a cada unidad mantener su personalidad dentro de un marco corporativo coherente. Paleta base compartida con acentos por división.",
+          "desc_en": "Visual system that allows each unit to maintain its personality within a coherent corporate framework. Shared base palette with division-specific accents."
         }
       ],
       "solution": "Sitio web corporativo con navegación clara entre unidades, diseño unificado y contenido estructurado para diferentes audiencias.",
+      "solution_en": "Corporate website with clear navigation between units, unified design and structured content for different audiences.",
       "results": "Profesionalizó la presencia digital del grupo y facilitó la comunicación corporativa.",
-      "learning": "En sitios multi-marca, el sistema visual debe ser flexible pero con reglas claras. La coherencia genera percepción de solidez."
+      "results_en": "Professionalized the group's digital presence and facilitated corporate communication.",
+      "learning": "En sitios multi-marca, el sistema visual debe ser flexible pero con reglas claras. La coherencia genera percepción de solidez.",
+      "learning_en": "In multi-brand sites, the visual system must be flexible but with clear rules. Coherence creates the perception of solidity."
     },
     {
       "id": "winny-cal-18",
@@ -761,7 +1003,9 @@
       "thumb": "https://mir-s3-cdn-cf.behance.net/projects/404/de49e0121542971.Y3JvcCwxOTIwLDE1MDEsMCwzMjc.png",
       "url": "https://www.behance.net/gallery/121542971/UXUI-Web-Calendario-Winny-2018",
       "hook": "Primera versión del calendario de embarazo: sentando las bases de una experiencia digital para mamás.",
+      "hook_en": "First version of the pregnancy calendar: laying the foundations for a digital experience for mothers.",
       "impact": "Web App · Primera iteración · Maternidad",
+      "impact_en": "Web App · First iteration · Maternity",
       "role": "UX/UI Designer",
       "company": "Existaya.com → Winny",
       "tools": [
@@ -769,18 +1013,26 @@
         "Illustrator"
       ],
       "context": "Primera iteración del calendario de embarazo para Winny, definiendo el concepto y la estructura base que evolucionaría en versiones posteriores.",
+      "context_en": "First iteration of the pregnancy calendar for Winny, defining the concept and base structure that would evolve in later versions.",
       "audience": "Mujeres embarazadas, público objetivo de Winny.",
+      "audience_en": "Pregnant women, Winny's target audience.",
       "roleDetail": "Diseñé el concepto visual y la estructura de la primera versión del calendario.",
+      "roleDetail_en": "I designed the visual concept and structure of the first version of the calendar.",
       "process": [
         {
           "id": "pr1",
           "title": "Concepto fundacional",
-          "desc": "Definí la estructura base: navegación por semanas, contenido editorial por etapa y diseño visual cálido alineado con Winny."
+          "title_en": "Foundational concept",
+          "desc": "Definí la estructura base: navegación por semanas, contenido editorial por etapa y diseño visual cálido alineado con Winny.",
+          "desc_en": "I defined the base structure: week-by-week navigation, editorial content by stage and warm visual design aligned with Winny."
         }
       ],
       "solution": "Primera versión del calendario web con navegación por semanas, contenido editorial y diseño visual de marca.",
+      "solution_en": "First version of the web calendar with weekly navigation, editorial content and brand visual design.",
       "results": "Su éxito validó el concepto y llevó a la versión 2019 con mejoras significativas.",
-      "learning": "Las primeras versiones son para aprender, no para ser perfectas. El valor está en lanzar, medir y mejorar."
+      "results_en": "Its success validated the concept and led to the 2019 version with significant improvements.",
+      "learning": "Las primeras versiones son para aprender, no para ser perfectas. El valor está en lanzar, medir y mejorar.",
+      "learning_en": "First versions are for learning, not for being perfect. The value is in launching, measuring and improving."
     }
   ],
   "theme": {
@@ -788,9 +1040,9 @@
     "colors": {
       "bg": "#060609",
       "bgAlt": "#0B0B12",
-      "card": "#10101A",
-      "accent": "#6366F1",
-      "accentAlt": "#22D3EE",
+      "card": "#14080E",
+      "accent": "#EC4899",
+      "accentAlt": "#A78BFA",
       "rose": "#F06878",
       "gold": "#E8A838",
       "text": "#EDECF8",
@@ -800,11 +1052,14 @@
   },
   "contact": {
     "title": "¿Trabajamos juntos?",
+    "title_en": "Let's work together?",
     "subtitle": "Disponible para proyectos remotos. Cuéntame sobre tu proyecto y veamos cómo puedo aportar valor.",
+    "subtitle_en": "Available for remote projects. Tell me about your project and let's see how I can add value.",
     "items": [
       {
         "id": "c1",
         "label": "Email",
+        "label_en": "Email",
         "value": "isabel.cri.vivas@gmail.com",
         "href": "mailto:isabel.cri.vivas@gmail.com",
         "color": "#7C6AF3"
@@ -812,6 +1067,7 @@
       {
         "id": "c2",
         "label": "LinkedIn",
+        "label_en": "LinkedIn",
         "value": "linkedin.com/in/isacrisvivas",
         "href": "https://linkedin.com/in/isacrisvivas",
         "color": "#34D9A8"
@@ -819,6 +1075,7 @@
       {
         "id": "c3",
         "label": "Behance",
+        "label_en": "Behance",
         "value": "behance.net/isabelcristi",
         "href": "https://www.behance.net/isabelcristi",
         "color": "#F06878"
@@ -826,6 +1083,7 @@
       {
         "id": "c4",
         "label": "Teléfono",
+        "label_en": "Phone",
         "value": "+57 316 535 9751",
         "href": "tel:+573165359751",
         "color": "#E8A838"
@@ -833,7 +1091,9 @@
       {
         "id": "c5",
         "label": "Ubicación",
+        "label_en": "Location",
         "value": "Colombia · Remoto / Híbrido",
+        "value_en": "Colombia · Remote / Hybrid",
         "href": null,
         "color": "#9594AE"
       }
@@ -862,35 +1122,45 @@
       "id": "ps1",
       "s": "01",
       "t": "Descubrir",
+      "t_en": "Discover",
       "d": "Research, entrevistas y datos",
+      "d_en": "Research, interviews and data",
       "c": "#7C6AF3"
     },
     {
       "id": "ps2",
       "s": "02",
       "t": "Definir",
+      "t_en": "Define",
       "d": "Insights, personas y problems",
+      "d_en": "Insights, personas and problems",
       "c": "#34D9A8"
     },
     {
       "id": "ps3",
       "s": "03",
       "t": "Idear",
+      "t_en": "Ideate",
       "d": "Workshops y prototipado",
+      "d_en": "Workshops and prototyping",
       "c": "#F06878"
     },
     {
       "id": "ps4",
       "s": "04",
       "t": "Diseñar",
+      "t_en": "Design",
       "d": "UI hi-fi y Design System",
+      "d_en": "Hi-fi UI and Design System",
       "c": "#E8A838"
     },
     {
       "id": "ps5",
       "s": "05",
       "t": "Validar",
+      "t_en": "Validate",
       "d": "Testing, métricas e iteración",
+      "d_en": "Testing, metrics and iteration",
       "c": "#7C6AF3"
     }
   ],

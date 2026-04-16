@@ -24,12 +24,13 @@ const storage = multer.diskStorage({
     cb(null, name);
   },
 });
+const ALLOWED_TYPES = /^(image\/(jpeg|png|webp|gif|svg\+xml)|video\/(mp4|webm|quicktime|x-matroska|x-msvideo|ogg))$/;
 const upload = multer({
   storage,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10 MB
+  limits: { fileSize: 500 * 1024 * 1024 }, // 500 MB (para videos)
   fileFilter: (_req, file, cb) => {
-    if (file.mimetype.startsWith("image/")) cb(null, true);
-    else cb(new Error("Solo se permiten imágenes"));
+    if (ALLOWED_TYPES.test(file.mimetype)) cb(null, true);
+    else cb(new Error("Formato no permitido. Usa JPG, PNG, WebP, GIF, MP4, WebM o MOV."));
   },
 });
 
