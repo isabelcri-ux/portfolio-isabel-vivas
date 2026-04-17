@@ -14,6 +14,10 @@ const JWT_SECRET = process.env.JWT_SECRET || "isabel-portfolio-secret-2026-chang
 const CONFIG_PATH = path.join(__dirname, "config.json");
 const CONTENT_PATH = path.join(__dirname, "data", "content.json");
 const UPLOADS_DIR = path.join(__dirname, "..", "public", "uploads");
+const DIST_DIR = path.join(__dirname, "..", "dist");
+
+/* ── Ensure uploads dir exists ── */
+if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 
 /* ── Multer — save uploads to public/uploads/ ── */
 const storage = multer.diskStorage({
@@ -35,14 +39,20 @@ const upload = multer({
 });
 
 app.use(express.json({ limit: "10mb" }));
-app.use(cors({
-  origin: process.env.FRONTEND_URL
-    ? [process.env.FRONTEND_URL, "http://localhost:5173", "http://localhost:4173"]
-    : ["http://localhost:5173", "http://localhost:4173"],
-  credentials: true,
-}));
-/* Serve uploaded files statically from Express too */
+
+/* ── CORS: solo en desarrollo local ── */
+if (process.env.NODE_ENV !== "production") {
+  app.use(cors({
+    origin: ["http://localhost:5173", "http://localhost:4173"],
+    credentials: true,
+  }));
+}
+
+/* ── Serve uploads and built frontend ── */
 app.use("/uploads", express.static(UPLOADS_DIR));
+if (fs.existsSync(DIST_DIR)) {
+  app.use(express.static(DIST_DIR));
+}
 
 /* ── Auto-init credentials if config.json doesn't exist ── */
 if (!fs.existsSync(CONFIG_PATH)) {
@@ -133,7 +143,16 @@ app.post("/api/upload", authMiddleware, upload.single("image"), (req, res) => {
   res.json({ url: `/uploads/${req.file.filename}` });
 });
 
+/* ── SPA fallback: todas las rutas no-API sirven index.html ── */
+if (fs.existsSync(DIST_DIR)) {
+  app.get("*", (_req, res) => {
+    res.sendFile(path.join(DIST_DIR, "index.html"));
+  });
+}
+
 app.listen(PORT, () => {
-  console.log(`\n🚀  Admin API → http://localhost:${PORT}`);
-  console.log(`    Panel admin → http://localhost:5173/admin\n`);
+  console.log(`\n🚀  Servidor corriendo en puerto ${PORT}`);
+  if (process.env.NODE_ENV !== "production") {
+    console.log(`    Panel admin → http://localhost:5173/admin\n`);
+  }
 });
