@@ -903,7 +903,7 @@ function CaseStudyPage({ project: p, onBack }) {
         <Fade>
           <div style={{ marginBottom: 48 }}>
             <Sec num="01" text={tr.sec_context} />
-            <h2 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 16px", fontFamily: F.display }}>{tr.cs_context_q}</h2>
+            <h2 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 16px", fontFamily: F.display }}>{pick(p, "contextTitle", lang) || tr.cs_context_q}</h2>
             <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: "0 0 14px" }}>{pick(p, "context", lang)}</p>
             <Card style={{ padding: "18px 22px", borderLeft: `3px solid ${p.color}` }}>
               <div style={{ fontSize: 10, color: p.color, textTransform: "uppercase", letterSpacing: 1, fontFamily: F.mono, marginBottom: 6, fontWeight: 600 }}>{tr.cs_audience}</div>
@@ -925,7 +925,7 @@ function CaseStudyPage({ project: p, onBack }) {
         <Fade>
           <div style={{ marginBottom: 48 }}>
             <Sec num="03" text={tr.sec_process} />
-            <h2 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 28px", fontFamily: F.display }}>{tr.cs_process_title}</h2>
+            <h2 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 28px", fontFamily: F.display }}>{pick(p, "processTitle", lang) || tr.cs_process_title}</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {p.process.map((step, i) => (
                 <Fade key={i} delay={i * 80}>
@@ -965,7 +965,7 @@ function CaseStudyPage({ project: p, onBack }) {
         <Fade>
           <div style={{ marginBottom: 48 }}>
             <Sec num="04" text={tr.sec_solution} />
-            <h2 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 16px", fontFamily: F.display }}>{tr.cs_solution_title}</h2>
+            <h2 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 16px", fontFamily: F.display }}>{pick(p, "solutionTitle", lang) || tr.cs_solution_title}</h2>
             <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: "0 0 20px" }}>{pick(p, "solution", lang)}</p>
             {p.images && p.images.length > 0 ? (
               <div style={{ display: "grid", gridTemplateColumns: p.images.length === 1 ? "1fr" : "repeat(auto-fill, minmax(280px, 1fr))", gap: 12 }}>
@@ -1029,7 +1029,7 @@ function CaseStudyPage({ project: p, onBack }) {
         <Fade>
           <div style={{ marginBottom: 48 }}>
             <Sec num="05" text={tr.sec_results} />
-            <h2 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 16px", fontFamily: F.display }}>{tr.cs_results_q}</h2>
+            <h2 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 16px", fontFamily: F.display }}>{pick(p, "resultsTitle", lang) || tr.cs_results_q}</h2>
             <Card style={{ padding: "24px 24px", borderLeft: `3px solid ${P.mint}`, marginBottom: 16 }}>
               <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: 0 }}>{pick(p, "results", lang)}</p>
             </Card>

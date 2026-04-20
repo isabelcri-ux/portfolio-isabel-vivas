@@ -476,7 +476,8 @@ export default function ProjectModal({ project, onSave, onClose, saving }) {
           <div style={{ marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${P.border}` }}>
             <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 14 }}>Detalle del caso de estudio</p>
 
-            <Field label="Contexto del proyecto" value={data.context} onChange={set("context")} multiline placeholder="¿Cuál era el problema o desafío?" />
+            <Field label="Título de sección Contexto (público)" value={data.contextTitle || ""} onChange={set("contextTitle")} placeholder="¿Qué problema existía?" />
+            <Field label="Contenido — Contexto del proyecto" value={data.context} onChange={set("context")} multiline placeholder="¿Cuál era el problema o desafío?" />
             <Field label="Audiencia / Usuarios objetivo" value={data.audience} onChange={set("audience")} multiline placeholder="¿Quiénes son los usuarios?" />
             <Field label="Mi rol en detalle" value={data.roleDetail} onChange={set("roleDetail")} multiline placeholder="¿Qué hice exactamente?" />
           </div>
@@ -484,14 +485,19 @@ export default function ProjectModal({ project, onSave, onClose, saving }) {
           {/* === BLOQUE 4: Proceso === */}
           <div style={{ marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${P.border}` }}>
             <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 14 }}>Proceso de diseño</p>
+
+            <Field label="Título de sección Proceso (público)" value={data.processTitle || ""} onChange={set("processTitle")} placeholder="Decisiones clave" />
             <ProcessSteps steps={data.process || []} onChange={set("process")} />
           </div>
 
           {/* === BLOQUE 5: Resultados === */}
           <div style={{ marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${P.border}` }}>
             <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 14 }}>Solución y resultados</p>
-            <Field label="Solución propuesta" value={data.solution} onChange={set("solution")} multiline placeholder="¿Cómo resolviste el problema?" />
-            <Field label="Resultados obtenidos" value={data.results} onChange={set("results")} multiline placeholder="Métricas, impacto, feedback..." />
+
+            <Field label="Título de sección Solución (público)" value={data.solutionTitle || ""} onChange={set("solutionTitle")} placeholder="Diseño final" />
+            <Field label="Contenido — Solución propuesta" value={data.solution} onChange={set("solution")} multiline placeholder="¿Cómo resolviste el problema?" />
+            <Field label="Título de sección Resultados (público)" value={data.resultsTitle || ""} onChange={set("resultsTitle")} placeholder="¿Qué se logró?" />
+            <Field label="Contenido — Resultados obtenidos" value={data.results} onChange={set("results")} multiline placeholder="Métricas, impacto, feedback..." />
             <Field label="Aprendizajes" value={data.learning} onChange={set("learning")} multiline placeholder="¿Qué aprendiste o cambiarías?" />
           </div>
 
