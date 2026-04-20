@@ -399,7 +399,7 @@ export default function ProjectModal({ project, onSave, onClose, saving }) {
           </div>
 
           {/* === BLOQUE 6: Imágenes finales === */}
-          <div>
+          <div style={{ marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${P.border}` }}>
             <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 6 }}>Pantallas finales / galería</p>
             <p style={{ fontSize: 12, color: P.textMut, fontFamily: F.body, marginBottom: 8 }}>Imágenes que aparecen en la sección "Diseño final" del caso de estudio.</p>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: `${P.accentSoft}`, border: `1px solid ${P.accent}25`, borderRadius: 6, padding: "4px 10px", marginBottom: 12 }}>
@@ -407,6 +407,28 @@ export default function ProjectModal({ project, onSave, onClose, saving }) {
               <span style={{ fontSize: 10, color: P.accentLight, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>Recomendado: 1280 × 720 px · Proporción 16:9 · PNG/JPG/WebP</span>
             </div>
             <ImageGallery label="Imágenes del proyecto" images={data.images || []} onChange={set("images")} />
+          </div>
+
+          {/* === BLOQUE 7: Prototipo Figma === */}
+          <div>
+            <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 6 }}>Prototipo interactivo</p>
+            <p style={{ fontSize: 12, color: P.textMut, fontFamily: F.body, marginBottom: 12 }}>Si tienes un prototipo en Figma, pega el link de "Share prototype" aquí. Se mostrará como botón en el detalle del proyecto.</p>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+              <svg width="14" height="14" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 28.5C19 26.0147 19.9955 23.6306 21.7771 21.8787C23.5587 20.1268 25.9799 19.1429 28.5 19.1429C31.0201 19.1429 33.4413 20.1268 35.2229 21.8787C37.0045 23.6306 38 26.0147 38 28.5C38 30.9853 37.0045 33.3694 35.2229 35.1213C33.4413 36.8732 31.0201 37.8571 28.5 37.8571C25.9799 37.8571 23.5587 36.8732 21.7771 35.1213C19.9955 33.3694 19 30.9853 19 28.5Z" fill="#1ABCFE"/>
+                <path d="M0 47.2143C0 44.729 0.995537 42.3449 2.77709 40.593C4.55864 38.8411 6.97981 37.8571 9.5 37.8571H19V47.2143C19 49.6996 18.0045 52.0837 16.2229 53.8356C14.4413 55.5875 12.0201 56.5714 9.5 56.5714C6.97981 56.5714 4.55864 55.5875 2.77709 53.8356C0.995537 52.0837 0 49.6996 0 47.2143Z" fill="#0ACF83"/>
+                <path d="M19 0V19.1429H28.5C31.0201 19.1429 33.4413 18.1589 35.2229 16.407C37.0045 14.6551 38 12.271 38 9.78571C38 7.30044 37.0045 4.91633 35.2229 3.16443C33.4413 1.41254 31.0201 0.428571 28.5 0.428571L19 0Z" fill="#FF7262"/>
+                <path d="M0 9.78571C0 12.271 0.995537 14.6551 2.77709 16.407C4.55864 18.1589 6.97981 19.1429 9.5 19.1429H19V0.428571H9.5C6.97981 0.428571 4.55864 1.41254 2.77709 3.16443C0.995537 4.91633 0 7.30044 0 9.78571Z" fill="#F24E1E"/>
+                <path d="M0 28.5C0 30.9853 0.995537 33.3694 2.77709 35.1213C4.55864 36.8732 6.97981 37.8571 9.5 37.8571H19V19.1429H9.5C6.97981 19.1429 4.55864 20.1268 2.77709 21.8787C0.995537 23.6306 0 26.0147 0 28.5Z" fill="#A259FF"/>
+              </svg>
+              <span style={{ fontSize: 11, color: P.textMut, fontFamily: F.mono }}>Figma → Share → Copy link to prototype</span>
+            </div>
+            <Field
+              label="Link del prototipo Figma"
+              value={data.figmaUrl || ""}
+              onChange={set("figmaUrl")}
+              placeholder="https://www.figma.com/proto/..."
+            />
           </div>
         </div>
 
