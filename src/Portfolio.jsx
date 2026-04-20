@@ -900,6 +900,7 @@ function CaseStudyPage({ project: p, onBack }) {
         </Fade>
 
         {/* 2. CONTEXTO */}
+        {p.showContext !== false && (
         <Fade>
           <div style={{ marginBottom: 48 }}>
             <Sec num="01" text={tr.sec_context} />
@@ -911,8 +912,10 @@ function CaseStudyPage({ project: p, onBack }) {
             </Card>
           </div>
         </Fade>
+        )}
 
         {/* 3. ROL */}
+        {p.showRole !== false && (
         <Fade>
           <div style={{ marginBottom: 48 }}>
             <Sec num="02" text={tr.sec_my_role} />
@@ -920,8 +923,10 @@ function CaseStudyPage({ project: p, onBack }) {
             <p style={{ fontSize: 15, color: P.textSec, lineHeight: 1.85, margin: 0 }}>{pick(p, "roleDetail", lang)}</p>
           </div>
         </Fade>
+        )}
 
         {/* 4. PROCESO */}
+        {p.showProcess !== false && (
         <Fade>
           <div style={{ marginBottom: 48 }}>
             <Sec num="03" text={tr.sec_process} />
@@ -960,8 +965,10 @@ function CaseStudyPage({ project: p, onBack }) {
             )}
           </div>
         </Fade>
+        )}
 
         {/* 5. SOLUCIÓN */}
+        {p.showSolution !== false && (
         <Fade>
           <div style={{ marginBottom: 48 }}>
             <Sec num="04" text={tr.sec_solution} />
@@ -1024,8 +1031,10 @@ function CaseStudyPage({ project: p, onBack }) {
             )}
           </div>
         </Fade>
+        )}
 
         {/* 6. RESULTADOS */}
+        {p.showResults !== false && (
         <Fade>
           <div style={{ marginBottom: 48 }}>
             <Sec num="05" text={tr.sec_results} />
@@ -1039,6 +1048,7 @@ function CaseStudyPage({ project: p, onBack }) {
             </Card>
           </div>
         </Fade>
+        )}
 
         {/* CTA */}
         <Fade>
@@ -1120,7 +1130,10 @@ function PortfolioPage({ onSelect, projects = [], processSteps }) {
             <TiltCard intensity={5} style={{ borderRadius: 20, height: "100%" }}>
               <article onClick={() => goProject(proj)} onMouseEnter={() => setHov(proj.id)} onMouseLeave={() => setHov(null)} onKeyDown={e => keyProject(e, proj)} tabIndex={0} role="button" aria-label={`Ver caso de estudio: ${proj.title}`} className="card-shimmer" style={{ background: P.card, borderRadius: 20, cursor: "pointer", border: `1px solid ${isH ? proj.color + "40" : P.border}`, overflow: "hidden", transition: "border-color 0.4s, box-shadow 0.4s", boxShadow: isH ? `0 24px 64px ${proj.color}20` : "none", outline: "none", display: "flex", flexDirection: "column", height: "100%" }}>
                 <div style={{ aspectRatio: "16/10", overflow: "hidden", position: "relative", flexShrink: 0 }}>
-                  <img src={proj.thumb} alt={proj.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.7s cubic-bezier(.22,1,.36,1)", transform: isH ? "scale(1.08)" : "scale(1)" }} />
+                  {isVideo(proj.thumb)
+                    ? <video src={proj.thumb} autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                    : <img src={proj.thumb} alt={proj.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.7s cubic-bezier(.22,1,.36,1)", transform: isH ? "scale(1.08)" : "scale(1)" }} />
+                  }
                   <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to top, ${P.bg}E0 0%, transparent 55%)` }} />
                   <div style={{ position: "absolute", top: 14, left: 14 }}><Tag color={proj.color}>{proj.tag}</Tag></div>
                   <div style={{ position: "absolute", inset: 0, background: `${proj.color}12`, opacity: isH ? 1 : 0, transition: "opacity 0.4s" }} />
@@ -1276,7 +1289,10 @@ function PortfolioPage({ onSelect, projects = [], processSteps }) {
           <Fade key={proj.id} delay={i * 55} style={{ height: "100%" }}>
             <article onClick={() => goProject(proj)} onMouseEnter={() => setHov(proj.id)} onMouseLeave={() => setHov(null)} onKeyDown={e => keyProject(e, proj)} tabIndex={0} role="button" aria-label={`Ver caso de estudio: ${proj.title}`} style={{ background: P.card, borderRadius: 18, cursor: "pointer", border: `1px solid ${isH ? proj.color + "35" : P.border}`, overflow: "hidden", transition: "all 0.4s cubic-bezier(.22,1,.36,1)", transform: isH ? "translateY(-6px)" : "none", boxShadow: isH ? `0 20px 56px ${proj.color}12` : "none", outline: "none", display: "flex", flexDirection: "column", height: "100%" }}>
               <div style={{ aspectRatio: "16/8", overflow: "hidden", position: "relative", flexShrink: 0 }}>
-                <img src={proj.thumb} alt={proj.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.7s", transform: isH ? "scale(1.06)" : "scale(1)" }} />
+                {isVideo(proj.thumb)
+                  ? <video src={proj.thumb} autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  : <img src={proj.thumb} alt={proj.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.7s", transform: isH ? "scale(1.06)" : "scale(1)" }} />
+                }
                 <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to top, ${P.bg}D0 0%, transparent 50%)` }} />
                 <div style={{ position: "absolute", top: 16, left: 16 }}><Tag color={proj.color}>{proj.tag}</Tag></div>
               </div>

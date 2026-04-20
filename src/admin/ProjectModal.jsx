@@ -472,6 +472,46 @@ export default function ProjectModal({ project, onSave, onClose, saving }) {
             <TagInput label="Herramientas (Enter para agregar)" tags={data.tools || []} onChange={set("tools")} />
           </div>
 
+          {/* === BLOQUE 2.5: Visibilidad de secciones === */}
+          <div style={{ marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${P.border}` }}>
+            <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 12 }}>Módulos visibles en el portfolio</p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+              {[
+                { key: "showContext",  label: "Contexto y problema" },
+                { key: "showRole",     label: "Mi rol" },
+                { key: "showProcess",  label: "Proceso de diseño" },
+                { key: "showSolution", label: "Solución / Diseño final" },
+                { key: "showResults",  label: "Resultados e impacto" },
+              ].map(({ key, label }) => {
+                const active = data[key] !== false;
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => set(key)(!active)}
+                    style={{
+                      display: "flex", alignItems: "center", gap: 8,
+                      padding: "8px 12px",
+                      background: active ? `${P.accent}15` : P.bgAlt,
+                      border: `1px solid ${active ? P.accent + "50" : P.border}`,
+                      borderRadius: 8, cursor: "pointer", textAlign: "left",
+                    }}
+                  >
+                    <div style={{
+                      width: 14, height: 14, borderRadius: 4, flexShrink: 0,
+                      background: active ? P.accent : "transparent",
+                      border: `2px solid ${active ? P.accent : P.textMut}`,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                    }}>
+                      {active && <svg width="8" height="8" viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                    </div>
+                    <span style={{ fontSize: 11, color: active ? P.text : P.textMut, fontFamily: F.body, fontWeight: active ? 600 : 400 }}>{label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* === BLOQUE 3: Detalle del caso === */}
           <div style={{ marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${P.border}` }}>
             <p style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 14 }}>Detalle del caso de estudio</p>

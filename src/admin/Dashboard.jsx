@@ -65,7 +65,7 @@ function AddBtn({ onClick, label = "+ Agregar" }) {
   );
 }
 
-function ProjectRow({ project: p, onEdit, onDelete, onRename }) {
+function ProjectRow({ project: p, onEdit, onDelete, onRename, onMoveUp, onMoveDown }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft]     = useState(p.title);
 
@@ -108,7 +108,12 @@ function ProjectRow({ project: p, onEdit, onDelete, onRename }) {
       </div>
 
       {/* Acciones */}
-      <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+      <div style={{ display: "flex", gap: 4, flexShrink: 0, alignItems: "center" }}>
+        {/* Reordenar */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 2, marginRight: 4 }}>
+          <button onClick={onMoveUp} disabled={!onMoveUp} title="Subir" style={{ padding: "2px 6px", background: onMoveUp ? P.surface : "transparent", border: `1px solid ${onMoveUp ? P.border : "transparent"}`, borderRadius: 4, cursor: onMoveUp ? "pointer" : "default", color: onMoveUp ? P.textSec : P.border, fontSize: 10, lineHeight: 1 }}>▲</button>
+          <button onClick={onMoveDown} disabled={!onMoveDown} title="Bajar" style={{ padding: "2px 6px", background: onMoveDown ? P.surface : "transparent", border: `1px solid ${onMoveDown ? P.border : "transparent"}`, borderRadius: 4, cursor: onMoveDown ? "pointer" : "default", color: onMoveDown ? P.textSec : P.border, fontSize: 10, lineHeight: 1 }}>▼</button>
+        </div>
         <EditBtn onClick={onEdit} />
         <DeleteBtn onClick={onDelete} />
       </div>
@@ -342,13 +347,25 @@ function ProjectsSection({ content, onSave }) {
         <AddBtn onClick={() => setModal({ id: uid(), title: "", tag: "", category: "ux", color: "#7C6AF3", thumb: "", url: "", hook: "", impact: "", role: "", company: "", tools: [], context: "", audience: "", roleDetail: "", process: [], solution: "", results: "", learning: "", images: [] })} label="+ Nuevo proyecto" />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        {projects.map((p) => (
+        {projects.map((p, i) => (
           <ProjectRow
             key={p.id}
             project={p}
             onEdit={() => setModal(p)}
             onDelete={() => setConfirm(p.id)}
             onRename={(newTitle) => handleSaveProject({ ...p, title: newTitle })}
+            onMoveUp={i > 0 ? () => {
+              const updated = [...projects];
+              [updated[i - 1], updated[i]] = [updated[i], updated[i - 1]];
+              setProjects(updated);
+              save(updated);
+            } : null}
+            onMoveDown={i < projects.length - 1 ? () => {
+              const updated = [...projects];
+              [updated[i], updated[i + 1]] = [updated[i + 1], updated[i]];
+              setProjects(updated);
+              save(updated);
+            } : null}
           />
         ))}
       </div>
