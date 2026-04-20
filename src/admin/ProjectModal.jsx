@@ -125,7 +125,7 @@ function ThumbField({ value, onChange }) {
 
       {/* Preview */}
       {value && (
-        <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", marginBottom: 10, border: `1px solid ${P.border}`, aspectRatio: "16/7", background: P.bgAlt }}>
+        <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", marginBottom: 10, border: `1px solid ${P.border}`, aspectRatio: "16/9", background: P.bgAlt }}>
           {isVideo(value)
             ? <video src={value} autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             : <img src={value} alt="portada" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
@@ -164,11 +164,11 @@ function ThumbField({ value, onChange }) {
       <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: P.accentSoft, border: `1px solid ${P.accent}25`, borderRadius: 6, padding: "4px 10px" }}>
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={P.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span style={{ fontSize: 10, color: P.accentLight, fontFamily: F.mono, fontWeight: 600 }}>Imagen: 1600 × 700 px · Proporción 16:7 · JPG/WebP</span>
+          <span style={{ fontSize: 10, color: P.accentLight, fontFamily: F.mono, fontWeight: 600 }}>Imagen: 1920 × 1080 px · Proporción 16:9 · JPG/WebP</span>
         </div>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(52,217,168,0.08)", border: "1px solid rgba(52,217,168,0.2)", borderRadius: 6, padding: "4px 10px" }}>
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={P.mint} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-          <span style={{ fontSize: 10, color: P.mint, fontFamily: F.mono, fontWeight: 600 }}>Video: 1920 × 820 px · MP4/WebM · máx. 50 MB</span>
+          <span style={{ fontSize: 10, color: P.mint, fontFamily: F.mono, fontWeight: 600 }}>Video: 1920 × 1080 px · Proporción 16:9 · MP4/WebM · máx. 500 MB</span>
         </div>
       </div>
 

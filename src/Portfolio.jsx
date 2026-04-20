@@ -850,7 +850,7 @@ function CaseStudyPage({ project: p, onBack }) {
 
         {/* 1. HERO */}
         <Fade delay={40}>
-          <div style={{ borderRadius: 20, overflow: "hidden", marginBottom: 32, border: `1px solid ${P.border}`, position: "relative", aspectRatio: "16/7", background: P.bgAlt }}>
+          <div style={{ borderRadius: 20, overflow: "hidden", marginBottom: 32, border: `1px solid ${P.border}`, position: "relative", aspectRatio: "16/9", background: P.bgAlt }}>
             {isVideo(p.thumb)
               ? (
                 <video
