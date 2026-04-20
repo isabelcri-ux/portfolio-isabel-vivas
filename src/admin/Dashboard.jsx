@@ -65,6 +65,57 @@ function AddBtn({ onClick, label = "+ Agregar" }) {
   );
 }
 
+function ProjectRow({ project: p, onEdit, onDelete, onRename }) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft]     = useState(p.title);
+
+  const commit = () => {
+    setEditing(false);
+    if (draft !== p.title) onRename(draft);
+  };
+
+  return (
+    <div style={{ background: P.surface, borderRadius: 10, padding: "14px 16px", display: "flex", alignItems: "center", gap: 14, border: `1px solid ${P.border}` }}>
+      {/* Miniatura */}
+      <div style={{ width: 56, height: 40, borderRadius: 6, overflow: "hidden", flexShrink: 0, background: P.bgAlt }}>
+        {p.thumb && <img src={p.thumb} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />}
+      </div>
+
+      {/* Título editable */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 2 }}>
+          <div style={{ width: 8, height: 8, borderRadius: "50%", background: p.color, flexShrink: 0 }} />
+          {editing ? (
+            <input
+              autoFocus
+              value={draft}
+              onChange={e => setDraft(e.target.value)}
+              onBlur={commit}
+              onKeyDown={e => { if (e.key === "Enter") commit(); if (e.key === "Escape") { setDraft(p.title); setEditing(false); } }}
+              style={{ flex: 1, fontSize: 14, fontWeight: 600, color: P.text, fontFamily: F.display, background: P.bgAlt, border: `1px solid ${P.accent}`, borderRadius: 6, padding: "3px 8px", outline: "none" }}
+            />
+          ) : (
+            <span
+              onClick={() => { setDraft(p.title); setEditing(true); }}
+              title="Haz clic para editar el título"
+              style={{ fontSize: 14, fontWeight: 600, color: P.text, fontFamily: F.display, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", cursor: "text", borderBottom: `1px dashed ${P.border}`, paddingBottom: 1 }}
+            >
+              {p.title || <span style={{ color: P.textMut, fontStyle: "italic" }}>Sin título</span>}
+            </span>
+          )}
+        </div>
+        <span style={{ fontSize: 11, color: P.textMut, fontFamily: F.mono }}>{p.tag} · {p.company?.split("→").pop().trim()}</span>
+      </div>
+
+      {/* Acciones */}
+      <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+        <EditBtn onClick={onEdit} />
+        <DeleteBtn onClick={onDelete} />
+      </div>
+    </div>
+  );
+}
+
 function SectionHeader({ title, subtitle }) {
   return (
     <div style={{ marginBottom: 28, paddingBottom: 20, borderBottom: `1px solid ${P.border}` }}>
@@ -291,23 +342,14 @@ function ProjectsSection({ content, onSave }) {
         <AddBtn onClick={() => setModal({ id: uid(), title: "", tag: "", category: "ux", color: "#7C6AF3", thumb: "", url: "", hook: "", impact: "", role: "", company: "", tools: [], context: "", audience: "", roleDetail: "", process: [], solution: "", results: "", learning: "", images: [] })} label="+ Nuevo proyecto" />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        {projects.map((p, i) => (
-          <div key={p.id} style={{ background: P.surface, borderRadius: 10, padding: "14px 16px", display: "flex", alignItems: "center", gap: 14, border: `1px solid ${P.border}` }}>
-            <div style={{ width: 56, height: 40, borderRadius: 6, overflow: "hidden", flexShrink: 0 }}>
-              <img src={p.thumb} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
-            </div>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 2 }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: p.color, flexShrink: 0 }} />
-                <span style={{ fontSize: 14, fontWeight: 600, color: P.text, fontFamily: F.display, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{p.title}</span>
-              </div>
-              <span style={{ fontSize: 11, color: P.textMut, fontFamily: F.mono }}>{p.tag} · {p.company?.split("→").pop().trim()}</span>
-            </div>
-            <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
-              <EditBtn onClick={() => setModal(p)} />
-              <DeleteBtn onClick={() => setConfirm(p.id)} />
-            </div>
-          </div>
+        {projects.map((p) => (
+          <ProjectRow
+            key={p.id}
+            project={p}
+            onEdit={() => setModal(p)}
+            onDelete={() => setConfirm(p.id)}
+            onRename={(newTitle) => handleSaveProject({ ...p, title: newTitle })}
+          />
         ))}
       </div>
 
