@@ -94,6 +94,105 @@ async function uploadFile(file) {
   return data.url;
 }
 
+function ThumbField({ value, onChange }) {
+  const [uploading, setUploading] = useState(false);
+  const [urlInput, setUrlInput] = useState("");
+  const [focused, setFocused] = useState(false);
+  const inputRef = useState(null);
+
+  const handleFile = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try { onChange(await uploadFile(file)); } catch { alert("Error al subir archivo"); }
+    setUploading(false);
+  };
+
+  const handleDrop = async (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try { onChange(await uploadFile(file)); } catch { alert("Error al subir archivo"); }
+    setUploading(false);
+  };
+
+  return (
+    <div style={{ marginBottom: 14 }}>
+      <label style={{ display: "block", fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>
+        Portada del proyecto (imagen o video)
+      </label>
+
+      {/* Preview */}
+      {value && (
+        <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", marginBottom: 10, border: `1px solid ${P.border}`, aspectRatio: "16/7", background: P.bgAlt }}>
+          {isVideo(value)
+            ? <video src={value} autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            : <img src={value} alt="portada" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          }
+          <button
+            onClick={() => onChange("")}
+            style={{ position: "absolute", top: 8, right: 8, background: "rgba(0,0,0,0.7)", border: "none", borderRadius: 6, color: "#fff", cursor: "pointer", fontSize: 13, padding: "4px 10px", fontFamily: F.body }}
+          >✕ Quitar</button>
+          {isVideo(value) && (
+            <span style={{ position: "absolute", top: 8, left: 8, background: "rgba(124,106,243,0.85)", color: "#fff", fontSize: 10, fontFamily: F.mono, fontWeight: 700, borderRadius: 5, padding: "3px 8px", letterSpacing: 1 }}>VIDEO</span>
+          )}
+        </div>
+      )}
+
+      {/* Drop zone */}
+      {!value && (
+        <div
+          onDrop={handleDrop}
+          onDragOver={e => e.preventDefault()}
+          style={{ border: `2px dashed ${P.accent}40`, borderRadius: 10, padding: "24px 16px", textAlign: "center", background: P.bgAlt, marginBottom: 10, cursor: "pointer" }}
+          onClick={() => document.getElementById("thumb-file-input").click()}
+        >
+          {uploading
+            ? <span style={{ fontSize: 13, color: P.accentLight, fontFamily: F.body }}>Subiendo...</span>
+            : <>
+                <div style={{ fontSize: 28, marginBottom: 6 }}>🎬</div>
+                <p style={{ fontSize: 13, color: P.textSec, margin: "0 0 4px", fontFamily: F.body }}>Arrastra aquí o haz clic para subir</p>
+                <p style={{ fontSize: 11, color: P.textMut, margin: 0, fontFamily: F.mono }}>JPG · PNG · WebP · MP4 · WebM · MOV</p>
+              </>
+          }
+        </div>
+      )}
+      <input id="thumb-file-input" type="file" accept="image/*,video/mp4,video/webm,video/quicktime,video/x-matroska" style={{ display: "none" }} onChange={handleFile} />
+
+      {/* Specs */}
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: P.accentSoft, border: `1px solid ${P.accent}25`, borderRadius: 6, padding: "4px 10px" }}>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={P.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span style={{ fontSize: 10, color: P.accentLight, fontFamily: F.mono, fontWeight: 600 }}>Imagen: 1600 × 700 px · Proporción 16:7 · JPG/WebP</span>
+        </div>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(52,217,168,0.08)", border: "1px solid rgba(52,217,168,0.2)", borderRadius: 6, padding: "4px 10px" }}>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={P.mint} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          <span style={{ fontSize: 10, color: P.mint, fontFamily: F.mono, fontWeight: 600 }}>Video: 1920 × 820 px · MP4/WebM · máx. 50 MB</span>
+        </div>
+      </div>
+
+      {/* URL manual */}
+      <div style={{ display: "flex", gap: 6 }}>
+        <input
+          value={urlInput}
+          onChange={e => setUrlInput(e.target.value)}
+          onKeyDown={e => { if (e.key === "Enter" && urlInput.trim()) { onChange(urlInput.trim()); setUrlInput(""); } }}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          placeholder="O pega una URL directamente..."
+          style={{ flex: 1, padding: "8px 12px", background: P.bgAlt, border: `1px solid ${focused ? P.accent : P.border}`, borderRadius: 7, color: P.text, fontFamily: F.body, fontSize: 12, outline: "none" }}
+        />
+        <button
+          onClick={() => { if (urlInput.trim()) { onChange(urlInput.trim()); setUrlInput(""); } }}
+          disabled={!urlInput.trim()}
+          style={{ padding: "8px 14px", background: urlInput.trim() ? P.accentSoft : "transparent", color: urlInput.trim() ? P.accentLight : P.textMut, border: `1px solid ${P.accent}30`, borderRadius: 7, cursor: urlInput.trim() ? "pointer" : "default", fontFamily: F.body, fontSize: 12, fontWeight: 600, whiteSpace: "nowrap" }}
+        >Usar URL</button>
+      </div>
+    </div>
+  );
+}
+
 function ImageGallery({ label, images, onChange }) {
   const [newUrl, setNewUrl] = useState("");
   const [focused, setFocused] = useState(false);
@@ -352,11 +451,9 @@ export default function ProjectModal({ project, onSave, onClose, saving }) {
               </div>
             </div>
 
-            <Field label="URL miniatura (thumb)" value={data.thumb} onChange={set("thumb")} placeholder="https://..." />
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: `${P.accentSoft}`, border: `1px solid ${P.accent}25`, borderRadius: 6, padding: "4px 10px", marginTop: -8, marginBottom: 14 }}>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={P.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span style={{ fontSize: 10, color: P.accentLight, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>Recomendado: 1200 × 750 px · Proporción 16:10 · JPG/WebP</span>
-            </div>
+            {/* Portada: upload imagen o video */}
+            <ThumbField value={data.thumb} onChange={set("thumb")} />
+
             <Field label="URL Behance / caso de estudio" value={data.url} onChange={set("url")} placeholder="https://behance.net/..." />
           </div>
 

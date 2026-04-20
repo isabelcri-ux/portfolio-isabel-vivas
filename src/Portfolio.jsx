@@ -850,13 +850,26 @@ function CaseStudyPage({ project: p, onBack }) {
 
         {/* 1. HERO */}
         <Fade delay={40}>
-          <div style={{ borderRadius: 20, overflow: "hidden", marginBottom: 32, border: `1px solid ${P.border}`, position: "relative", aspectRatio: "16/7" }}>
-            <img
-              src={p.thumb}
-              alt={`Thumbnail del proyecto ${p.title}`}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-              loading="eager"
-            />
+          <div style={{ borderRadius: 20, overflow: "hidden", marginBottom: 32, border: `1px solid ${P.border}`, position: "relative", aspectRatio: "16/7", background: P.bgAlt }}>
+            {isVideo(p.thumb)
+              ? (
+                <video
+                  src={p.thumb}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                />
+              ) : (
+                <img
+                  src={p.thumb}
+                  alt={`Portada del proyecto ${p.title}`}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  loading="eager"
+                />
+              )
+            }
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "60%", background: `linear-gradient(to top, ${P.bg}, transparent)` }} />
             <div style={{ position: "absolute", bottom: 28, left: 28, right: 28 }}>
               <Tag color={p.color}>{p.tag}</Tag>
