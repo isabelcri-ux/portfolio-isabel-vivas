@@ -536,8 +536,8 @@ export default function ProjectModal({ project, onSave, onClose, saving }) {
           </button>
           <button
             onClick={handleSave}
-            disabled={saving || !data.title.trim()}
-            style={{ padding: "10px 28px", background: saving || !data.title.trim() ? P.textMut : P.accent, color: "#fff", border: "none", borderRadius: 8, fontWeight: 600, fontSize: 13, cursor: saving ? "wait" : !data.title.trim() ? "not-allowed" : "pointer", fontFamily: F.body, transition: "background 0.2s" }}
+            disabled={saving}
+            style={{ padding: "10px 28px", background: saving ? P.textMut : P.accent, color: "#fff", border: "none", borderRadius: 8, fontWeight: 600, fontSize: 13, cursor: saving ? "wait" : "pointer", fontFamily: F.body, transition: "background 0.2s" }}
           >
             {saving ? "Guardando..." : isNew ? "Crear proyecto" : "Guardar cambios"}
           </button>
