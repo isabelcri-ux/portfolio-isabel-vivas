@@ -1172,7 +1172,10 @@ function PortfolioPage({ onSelect, projects = [], processSteps }) {
               {/* Thumbnail */}
               <div style={{ padding: "12px 16px 12px 8px" }}>
                 <div style={{ aspectRatio: "16/9", overflow: "hidden", borderRadius: 8 }}>
-                  <img src={proj.thumb} alt={proj.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s", transform: isH ? "scale(1.06)" : "scale(1)" }} />
+                  {isVideo(proj.thumb)
+                    ? <video src={proj.thumb} autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                    : <img src={proj.thumb} alt={proj.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s", transform: isH ? "scale(1.06)" : "scale(1)" }} />
+                  }
                 </div>
               </div>
               {/* Text */}
@@ -1236,7 +1239,10 @@ function PortfolioPage({ onSelect, projects = [], processSteps }) {
               <Fade key={proj.id} delay={i * 50} style={{ height: "100%" }}>
                 <article onClick={() => goProject(proj)} onMouseEnter={() => setHov(proj.id)} onMouseLeave={() => setHov(null)} onKeyDown={e => keyProject(e, proj)} tabIndex={0} role="button" aria-label={`Ver caso de estudio: ${proj.title}`} style={{ background: P.card, borderRadius: 16, cursor: "pointer", border: `1px solid ${isH ? proj.color + "40" : P.border}`, overflow: "hidden", transition: "all 0.35s cubic-bezier(.22,1,.36,1)", transform: isH ? "translateY(-5px)" : "none", boxShadow: isH ? `0 14px 44px ${proj.color}14` : "none", outline: "none", display: "flex", flexDirection: "column", height: "100%" }}>
                   <div style={{ aspectRatio: "16/9", overflow: "hidden", flexShrink: 0 }}>
-                    <img src={proj.thumb} alt={proj.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s", transform: isH ? "scale(1.07)" : "scale(1)" }} />
+                    {isVideo(proj.thumb)
+                      ? <video src={proj.thumb} autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                      : <img src={proj.thumb} alt={proj.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s", transform: isH ? "scale(1.07)" : "scale(1)" }} />
+                    }
                   </div>
                   <div style={{ padding: "14px 16px 18px", flex: 1, display: "flex", flexDirection: "column" }}>
                     <Tag color={proj.color} style={{ marginBottom: 8 }}>{proj.tag}</Tag>
@@ -1261,7 +1267,10 @@ function PortfolioPage({ onSelect, projects = [], processSteps }) {
           <Fade key={proj.id} delay={i * 55} style={{ height: "100%" }}>
             <article onClick={() => goProject(proj)} onMouseEnter={() => setHov(proj.id)} onMouseLeave={() => setHov(null)} onKeyDown={e => keyProject(e, proj)} tabIndex={0} role="button" aria-label={`Ver caso de estudio: ${proj.title}`} style={{ background: P.card, borderRadius: 16, cursor: "pointer", border: `1px solid ${isH ? proj.color + "30" : P.border}`, overflow: "hidden", transition: "all 0.4s cubic-bezier(.22,1,.36,1)", transform: isH ? "translateY(-5px)" : "none", boxShadow: isH ? `0 16px 48px ${proj.color}10` : "none", outline: "none", display: "flex", flexDirection: "column", height: "100%" }}>
               <div style={{ aspectRatio: "16/9", overflow: "hidden", position: "relative", flexShrink: 0 }}>
-                <img src={proj.thumb} alt={proj.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.6s", transform: isH ? "scale(1.05)" : "scale(1)" }} />
+                {isVideo(proj.thumb)
+                  ? <video src={proj.thumb} autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  : <img src={proj.thumb} alt={proj.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.6s", transform: isH ? "scale(1.05)" : "scale(1)" }} />
+                }
                 <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to top, ${P.bg}CC 0%, transparent 60%)` }} />
                 <div style={{ position: "absolute", bottom: 14, right: 14, padding: "6px 14px", borderRadius: 8, background: "rgba(255,255,255,0.10)", backdropFilter: "blur(8px)", fontSize: 12, color: "#fff", fontFamily: F.mono, fontWeight: 600, opacity: isH ? 1 : 0, transform: isH ? "translateY(0)" : "translateY(6px)", transition: "all 0.3s" }} aria-hidden="true">{t.see_case} →</div>
               </div>
