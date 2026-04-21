@@ -94,6 +94,62 @@ async function uploadFile(file) {
   return data.url;
 }
 
+function CardImageField({ value, onChange }) {
+  const [uploading, setUploading] = useState(false);
+
+  const handleFile = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try { onChange(await uploadFile(file)); } catch { alert("Error al subir archivo"); }
+    setUploading(false);
+  };
+
+  const handleDrop = async (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try { onChange(await uploadFile(file)); } catch { alert("Error al subir archivo"); }
+    setUploading(false);
+  };
+
+  return (
+    <div style={{ marginBottom: 14 }}>
+      <label style={{ display: "block", fontSize: 10, color: P.textMut, fontFamily: F.mono, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>
+        Imagen de la tarjeta (portafolio grid)
+      </label>
+      <p style={{ fontSize: 11, color: P.textMut, fontFamily: F.body, margin: "0 0 8px" }}>
+        Imagen estática que aparece en las tarjetas del portafolio. Si no se define, se usa la portada.
+      </p>
+
+      {value ? (
+        <div style={{ position: "relative", borderRadius: 10, overflow: "hidden", marginBottom: 8, border: `1px solid ${P.border}`, aspectRatio: "16/10", background: P.bgAlt }}>
+          <img src={value} alt="card" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <button onClick={() => onChange("")} style={{ position: "absolute", top: 8, right: 8, background: "rgba(0,0,0,0.7)", border: "none", borderRadius: 6, color: "#fff", cursor: "pointer", fontSize: 13, padding: "4px 10px", fontFamily: F.body }}>✕ Quitar</button>
+        </div>
+      ) : (
+        <div
+          onDrop={handleDrop}
+          onDragOver={e => e.preventDefault()}
+          onClick={() => document.getElementById("card-image-input").click()}
+          style={{ border: `2px dashed ${P.accent}30`, borderRadius: 10, padding: "18px 16px", textAlign: "center", background: P.bgAlt, marginBottom: 8, cursor: "pointer" }}
+        >
+          {uploading
+            ? <span style={{ fontSize: 12, color: P.accentLight, fontFamily: F.body }}>Subiendo...</span>
+            : <>
+                <div style={{ fontSize: 22, marginBottom: 4 }}>🖼️</div>
+                <p style={{ fontSize: 12, color: P.textSec, margin: "0 0 3px", fontFamily: F.body }}>Arrastra o haz clic para subir</p>
+                <p style={{ fontSize: 10, color: P.textMut, margin: 0, fontFamily: F.mono }}>JPG · PNG · WebP · Recomendado: 1200 × 750 px</p>
+              </>
+          }
+        </div>
+      )}
+      <input id="card-image-input" type="file" accept="image/*" style={{ display: "none" }} onChange={handleFile} />
+    </div>
+  );
+}
+
 function ThumbField({ value, onChange }) {
   const [uploading, setUploading] = useState(false);
   const [urlInput, setUrlInput] = useState("");
@@ -454,22 +510,8 @@ export default function ProjectModal({ project, onSave, onClose, saving }) {
             {/* Portada: upload imagen o video */}
             <ThumbField value={data.thumb} onChange={set("thumb")} />
 
-            {/* Poster para video */}
-            {data.thumb && /\.(mp4|webm|mov|mkv|avi|ogv|m4v)(\?.*)?$/i.test(data.thumb) && (
-              <div style={{ marginTop: -4, marginBottom: 14 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={P.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                  <span style={{ fontSize: 10, color: P.accent, fontFamily: F.mono, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>Imagen de previsualización del video</span>
-                </div>
-                <p style={{ fontSize: 11, color: P.textMut, fontFamily: F.body, margin: "0 0 8px" }}>Se muestra antes de que cargue el video y en navegadores que no lo soporten.</p>
-                <Field
-                  label="URL imagen poster (opcional)"
-                  value={data.thumbPoster || ""}
-                  onChange={set("thumbPoster")}
-                  placeholder="https://... o sube una imagen JPG/WebP · 1920×1080 px"
-                />
-              </div>
-            )}
+            {/* Imagen de tarjeta (card) — siempre disponible */}
+            <CardImageField value={data.cardImage || ""} onChange={set("cardImage")} />
 
             <Field label="URL Behance / caso de estudio" value={data.url} onChange={set("url")} placeholder="https://behance.net/..." />
           </div>
